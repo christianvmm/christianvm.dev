@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+   scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+   body,
+   html {
+      background-color: #000;
+   }
+}
+
+/**
+
+
+**/
+
+:root {
+   --sh-keyword: #87a0be;
+   --sh-class: white;
+   --sh-string: #a8bd91;
+   --sh-identifier: white;
+   --sh-sign: #8fb7c7;
+   --sh-comment: #636e86;
+   --sh-jsxliterals: #ffffff;
+}
+
+.post {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+   margin-top: 1.5rem;
+   font-weight: 600;
+   color: black;
+}
+
+.post {
+   /* text-zinc-600 */
+   color: rgb(82, 82, 91);
+}
+
+.post li::marker {
+   color: rgb(0, 0, 0);
+}
+
+@media (prefers-color-scheme: dark) {
+   .post h1,
+   .post h2,
+   .post h3,
+   .post h4,
+   .post h5,
+   .post h6 {
+      color: white;
+   }
+
+   .post {
+      /* text-zinc-400 */
+      color: rgb(161, 161, 170);
+   }
+
+   .post li::marker {
+      /* text-zinc-700 */
+      color: rgb(63, 63, 70);
+   }
+}
+
+.post ul {
+   list-style-type: disc;
+   padding-left: 2rem;
+}
+
+.post pre code {
+   font-size: 14px;
+   background-color: #111113;
+}
+
+.window-btns {
+   display: flex;
+   gap: 6px;
+   padding-bottom: 5px;
+}
+
+.window-btn {
+   width: 9px;
+   height: 9px;
+   border-radius: 50%;
+}
+
+.close {
+   background-color: #ed6a5e;
+}
+
+.minimize {
+   background-color: #f4bf4f;
+}
+
+.expand {
+   background-color: #61c554;
+}
