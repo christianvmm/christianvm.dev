@@ -45,6 +45,7 @@ export function Navbar() {
             const isMobile =
                typeof window !== 'undefined' && window.innerWidth < 1024
 
+            // TODO: Fix position
             const mobileWidthFactor = 1 + 1 / appLinks.length
 
             setSelectorPosition({

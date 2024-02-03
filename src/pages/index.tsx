@@ -1,7 +1,7 @@
 import { Head } from '@/components/Head'
 import { Badge } from '@/components/Badge'
 import { socialMediaLinks } from '@/consts'
-import Tooltip from '@/components/Tooltip'
+import { Tooltip } from '@/components/Tooltip'
 import Image from 'next/image'
 
 export const off = 'text-zinc-600 dark:text-zinc-400'
@@ -114,6 +114,15 @@ export default function Home() {
                      API to create a smooth and user-friendly graphic interface.
                   </p>
                </div>
+            </section>
+
+            <section>
+               <h1 className='font-semibold mb-4'>Projects</h1>
+
+               <h2 className='font-medium'>Finance</h2>
+               <p className='text-zinc-600 dark:text-zinc-400 mb-4'>
+                  An easy to use app to track your daily expenses
+               </p>
             </section>
          </div>
       </>

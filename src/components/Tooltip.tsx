@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn'
 
-export default function Tooltip({
+export function Tooltip({
    className = '',
    position = 'top',
    title,
@@ -9,7 +9,7 @@ export default function Tooltip({
    title: string
    position?: 'top' | 'left' | 'right' | 'bottom'
    className?: string
-   children: string
+   children?: React.ReactNode
 }) {
    return (
       <>
