@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const appLinks = [
    {
@@ -65,7 +65,7 @@ export function Navbar() {
       }
    }, [pathname])
 
-   useLayoutEffect(() => {
+   useEffect(() => {
       // On first render, wait for the selector to be rendered
       if (selectorPosition.x === 0 && selectorPosition.width === 0) {
          setTimeout(() => {

@@ -1,27 +1,58 @@
-export function formatDate(date: string, hideTimeAgo?: boolean): string {
+const SECOND = 1000
+const MINUTE = SECOND * 60
+const HOUR = MINUTE * 60
+
+export function getTimeAgo(
+   date: string | Date,
+   dayPrecision?: boolean
+): string {
    let currentDate = new Date()
-   if (!date.includes('T')) {
-      date = `${date}T00:00:00`
-   }
-   let targetDate = new Date(date)
+   let targetDate = typeof date === 'string' ? createDate(date) : date
 
    let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear()
    let monthsAgo = currentDate.getMonth() - targetDate.getMonth()
    let daysAgo = currentDate.getDate() - targetDate.getDate()
-
-   let formattedDate = ''
+   let diffMs = currentDate.getTime() - targetDate.getTime()
 
    if (yearsAgo > 0) {
-      formattedDate = `${yearsAgo}y ago`
-   } else if (monthsAgo > 0) {
-      formattedDate = `${monthsAgo}mo ago`
-   } else if (daysAgo > 0) {
-      formattedDate = `${daysAgo}d ago`
-   } else {
-      formattedDate = 'Today'
+      return `${yearsAgo}y ago`
    }
 
-   let fullDate = targetDate.toLocaleString('en-us', {
+   if (monthsAgo > 0) {
+      return `${monthsAgo}mo ago`
+   }
+
+   if (daysAgo > 0) {
+      return `${daysAgo}d ago`
+   }
+
+   if (!dayPrecision) {
+      return 'Today'
+   }
+
+   if (diffMs > HOUR) {
+      return `${Math.floor(diffMs / HOUR)}h ago`
+   }
+
+   if (diffMs > MINUTE) {
+      return `${Math.floor(diffMs / MINUTE)}m ago`
+   }
+
+   return `${Math.floor(diffMs / SECOND)}s ago`
+}
+
+function createDate(dateStr: string): Date {
+   if (!dateStr.includes('T')) {
+      dateStr = `${dateStr}T00:00:00`
+   }
+
+   return new Date(dateStr)
+}
+
+export function formatDate(date: string | Date, hideTimeAgo?: boolean): string {
+   const targetDate = typeof date === 'string' ? createDate(date) : date
+   const timeAgo = getTimeAgo(targetDate)
+   const fullDate = targetDate.toLocaleString('en-us', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
@@ -31,5 +62,5 @@ export function formatDate(date: string, hideTimeAgo?: boolean): string {
       return fullDate
    }
 
-   return `${fullDate} (${formattedDate})`
+   return `${fullDate} (${timeAgo})`
 }

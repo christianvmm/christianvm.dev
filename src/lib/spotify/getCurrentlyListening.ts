@@ -1,6 +1,7 @@
 import { formatTrack, trackModel } from '@/lib/spotify'
 import { z } from 'zod'
 
+const DEFAULT_MSG = 'Currently playing not available'
 export async function getCurrentlyListening(accessToken: string) {
    let response
 
@@ -18,26 +19,17 @@ export async function getCurrentlyListening(accessToken: string) {
       if (f.ok) {
          response = await f.json()
       } else {
-         return {
-            error: true,
-         }
+         throw new Error(DEFAULT_MSG)
       }
    } catch {
-      return {
-         error: true,
-      }
+      throw new Error(DEFAULT_MSG)
    }
 
-   const { progress_ms, item } = z
+   const { item } = z
       .object({
-         progress_ms: z.number(),
          item: trackModel,
       })
       .parse(response)
 
-   return {
-      progressMs: progress_ms,
-      track: formatTrack(item),
-      error: false,
-   }
+   return formatTrack(item)
 }

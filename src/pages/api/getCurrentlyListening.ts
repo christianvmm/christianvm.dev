@@ -1,10 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getAccessToken, getCurrentlyListening } from '@/lib/spotify'
+import { Track, getAccessToken, getCurrentlyListening } from '@/lib/spotify'
 import { useEffect, useState } from 'react'
+import { getRecentlyPlayedTracks } from '@/lib/spotify/getRecentlyPlayedTracks'
+import { getTimeAgo } from '@/utils/formatDate'
 
 let accessToken = ''
 
-type ResponseData = Awaited<ReturnType<Awaited<typeof getCurrentlyListening>>>
+type ResponseData = {
+   track?: Track
+   title?: string
+}
 
 export default async function handler(
    req: NextApiRequest,
@@ -20,21 +25,35 @@ export default async function handler(
    }
 
    try {
-      const data = await getCurrentlyListening(token)
-      res.status(200).json(data)
+      const track = await getCurrentlyListening(token)
+      res.status(200).json({ track, title: "What I'm currently listening to" })
    } catch (err) {
-      console.log(err)
-      res.status(401)
+      try {
+         const [{ playedAt, track }] = await getRecentlyPlayedTracks(token, 1)
+         res.status(200).json({
+            track,
+            title: `I was listening to this ${getTimeAgo(playedAt, true)}`,
+         })
+      } catch (err) {
+         res.status(409).json({})
+      }
    }
 }
 
 export function useCurrentlyListening() {
    const [data, setData] = useState<ResponseData>()
+   const [error, setError] = useState(false)
    const [isLoading, setIsLoading] = useState(true)
 
    useEffect(() => {
       fetch('/api/getCurrentlyListening')
-         .then((res) => res.json())
+         .then(async (res) => {
+            if (res.ok) {
+               return res.json()
+            } else {
+               setError(true)
+            }
+         })
          .then(setData)
          .finally(() => {
             setIsLoading(false)
@@ -43,6 +62,7 @@ export function useCurrentlyListening() {
 
    return {
       data,
+      error,
       isLoading,
    }
 }
