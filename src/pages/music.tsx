@@ -53,10 +53,10 @@ export default function Music({ artists, tracks }: MusicProps) {
                                  {title}
                               </a>
 
-                              <p className='text-zinc-600 dark:text-[#a1a1aa]'>
+                              <p className='text-zinc-600 dark:text-zinc-400'>
                                  {artists.map(({ name }) => name).join(', ')}
                               </p>
-                              <p className='text-zinc-600 dark:text-[#a1a1aa]'>
+                              <p className='text-zinc-600 dark:text-zinc-400'>
                                  {album}
                               </p>
                            </div>
@@ -80,7 +80,7 @@ export default function Music({ artists, tracks }: MusicProps) {
                               {name}
                            </a>
 
-                           <p className='text-zinc-600 dark:text-[#a1a1aa]'>
+                           <p className='text-zinc-600 dark:text-zinc-400'>
                               {followers} followers
                            </p>
                         </div>

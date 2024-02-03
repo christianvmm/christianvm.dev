@@ -20,11 +20,11 @@ export function CurrentlyListening() {
             'lg:mb-0 lg:bottom-10 lg:right-10 lg:mx-0 lg:ml-auto lg:order-2 lg:w-96'
          )}
       >
-         {data?.title && <Tooltip title={data.title} />}
-
          <div className='flex items-center gap-4 h-full'>
-            {data?.track && (
+            {data?.track && data?.title ? (
                <>
+                  <Tooltip title={data.title} />
+
                   <img
                      height='64'
                      width='64'
@@ -41,12 +41,22 @@ export function CurrentlyListening() {
                         {data.track.title}
                      </a>
 
-                     <p className='text-sm text-zinc-600 dark:text-[#a1a1aa] line-clamp-1'>
+                     <p className='text-sm text-zinc-600 dark:text-zinc-400 line-clamp-1'>
                         {data.track.artists.map(({ name }) => name).join(', ')}
                      </p>
-                     <p className='text-sm text-zinc-600 dark:text-[#a1a1aa] line-clamp-1'>
+                     <p className='text-sm text-zinc-600 dark:text-zinc-400 line-clamp-1'>
                         {data.track.album}
                      </p>
+                  </div>
+               </>
+            ) : (
+               <>
+                  <div className='h-[64px] w-[64px] bg-zinc-100 dark:bg-zinc-900 animate-pulse' />
+
+                  <div className='flex flex-col justify-between flex-1 h-full'>
+                     <div className='rounded-sm h-4 bg-zinc-100 dark:bg-zinc-900 animate-pulse'></div>
+                     <div className='rounded-sm h-4 bg-zinc-100 dark:bg-zinc-900 animate-pulse'></div>
+                     <div className='rounded-sm h-4 bg-zinc-100 dark:bg-zinc-900 animate-pulse'></div>
                   </div>
                </>
             )}
