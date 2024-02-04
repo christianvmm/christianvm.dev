@@ -14,7 +14,7 @@ export default function Blog({ posts }: BlogProps) {
       <>
          <Head title='blog' description='This is my blog.' />
 
-         <main className={cn('flex-1 max-w-lg mx-auto')}>
+         <div className={cn('flex-1 max-w-lg mx-auto')}>
             <h1 className='text-2xl font-semibold mb-8'>blog</h1>
 
             {posts
@@ -42,7 +42,7 @@ export default function Blog({ posts }: BlogProps) {
                      </div>
                   </Link>
                ))}
-         </main>
+         </div>
       </>
    )
 }

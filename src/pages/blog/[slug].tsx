@@ -53,13 +53,13 @@ export default function PostPage({ post }: PostProps) {
          />
 
          <section className={cn('max-w-lg mx-auto flex-1')}>
-            <div className='mb-8 space-y-1'>
+            <header className='mb-8 space-y-1'>
                <h1 className='text-2xl font-semibold'>{post.metadata.title}</h1>
 
                <p className='text-sm text-zinc-600 dark:text-zinc-400'>
                   {formatDate(post.metadata.publishedAt)}
                </p>
-            </div>
+            </header>
 
             <article className='post'>
                {post.content && <CustomMDX {...post.content} />}

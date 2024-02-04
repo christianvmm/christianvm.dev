@@ -27,13 +27,15 @@ export default function Music({ artists, tracks }: MusicProps) {
          <div className={cn('flex flex-col flex-1')}>
             <CurrentlyListening />
 
-            <div className={cn('w-full max-w-lg mx-auto order-2 lg:order-1')}>
+            <section
+               className={cn('w-full max-w-lg mx-auto order-2 lg:order-1')}
+            >
                <h1 className='text-2xl font-semibold mb-8'>top tracks</h1>
 
-               <div className='flex flex-col gap-y-4'>
+               <ul className='flex flex-col gap-y-4'>
                   {tracks.map(
                      ({ artists, album, songUrl, title, image, id }) => (
-                        <div
+                        <li
                            className='flex flex-row items-center space-x-4'
                            key={id}
                         >
@@ -60,16 +62,16 @@ export default function Music({ artists, tracks }: MusicProps) {
                                  {album}
                               </p>
                            </div>
-                        </div>
+                        </li>
                      )
                   )}
-               </div>
+               </ul>
 
                <h1 className='text-2xl font-semibold my-8'>top artists</h1>
 
-               <div className='flex flex-col gap-y-4'>
+               <ul className='flex flex-col gap-y-4'>
                   {artists.map(({ name, url, image, followers, id }) => (
-                     <div
+                     <li
                         className='flex flex-row items-center space-x-4'
                         key={id}
                      >
@@ -84,10 +86,10 @@ export default function Music({ artists, tracks }: MusicProps) {
                               {followers} followers
                            </p>
                         </div>
-                     </div>
+                     </li>
                   ))}
-               </div>
-            </div>
+               </ul>
+            </section>
          </div>
       </>
    )

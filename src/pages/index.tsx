@@ -14,7 +14,7 @@ export default function Home() {
          <Head title='home' />
 
          <div className='max-w-lg mx-auto flex  flex-col gap-24'>
-            <section className='flex gap-8 flex-col'>
+            <header className='flex gap-8 flex-col'>
                <Image
                   alt="Christian Velez Medina's profile image"
                   width='640'
@@ -50,18 +50,16 @@ export default function Home() {
                      })}
                   </div>
                </div>
-            </section>
+            </header>
 
             <section>
                <div className='flex flex-col md:flex-row items-start gap-4 mb-3'>
                   <div>
-                     <h1 className='font-semibold'>
+                     <h2 className='font-semibold'>
                         Frontend Developer at Estradata
-                     </h1>
+                     </h2>
 
-                     <p className='text-sm'>
-                        2021 - <span className=''> now</span>
-                     </p>
+                     <p className='text-sm'>2021 - now</p>
                   </div>
                </div>
 
