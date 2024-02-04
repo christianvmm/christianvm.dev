@@ -11,9 +11,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
          <div className='flex flex-col-reverse lg:flex-col min-h-screen justify-start'>
             <Navbar />
 
-            <main className='w-full flex-1 px-6 pt-16 pb-6 md:pb-10 md:px-10 lg:pt-0'>
+            <div className='w-full flex-1 px-6 pt-16 pb-6 md:pb-10 md:px-10 lg:pt-0'>
                {children}
-            </main>
+            </div>
          </div>
       </div>
    )
