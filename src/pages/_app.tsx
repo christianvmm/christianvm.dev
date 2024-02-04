@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
          >
             <div
                className={cn(
-                  pretendard.className,
+                  pretendard.variable,
                   'relative font-sans selection:bg-blue-100 selection:text-blue-500 bg-light-zinc dark:text-white dark:bg-black min-h-screen dark:selection:bg-blue-900 dark:selection:text-blue-400'
                )}
             >
