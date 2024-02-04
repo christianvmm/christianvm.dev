@@ -3,27 +3,27 @@ import {
    EnvelopeClosedIcon,
    GitHubLogoIcon,
    LinkedInLogoIcon,
-} from '@radix-ui/react-icons'
+} from '@/icons'
 
 export const socialMediaLinks = [
    {
       href: 'https://www.instagram.com/christian.vm_/',
-      title: 'Instagram',
+      name: 'Instagram',
       icon: InstagramLogoIcon,
    },
    {
       href: 'https://github.com/christianvmm',
-      title: 'GitHub',
+      name: 'GitHub',
       icon: GitHubLogoIcon,
    },
    {
       href: 'https://www.linkedin.com/in/christian-velez-medina-330182218',
-      title: 'LinkedIn',
+      name: 'LinkedIn',
       icon: LinkedInLogoIcon,
    },
    {
       href: 'mailto:christian.gerardo_@outlook.es',
-      title: 'Email',
+      name: 'Email',
       icon: EnvelopeClosedIcon,
    },
 ]

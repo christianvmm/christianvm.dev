@@ -36,10 +36,15 @@ export default function Home() {
                   </p>
 
                   <div className='flex gap-4'>
-                     {socialMediaLinks.map((item) => {
+                     {socialMediaLinks.map((link) => {
                         return (
-                           <a key={item.title} href={item.href} target='_blank'>
-                              <item.icon />
+                           <a
+                              key={link.name}
+                              aria-label={`Christian Velez Medina's ${link.name}`}
+                              href={link.href}
+                              target='_blank'
+                           >
+                              <link.icon />
                            </a>
                         )
                      })}

@@ -1,11 +1,10 @@
 import type { AppProps } from 'next/app'
-import cn from 'classnames'
 import { Toaster } from 'sonner'
 import { pretendard } from '@/fonts/pretendard'
 import { ThemeProvider } from 'next-themes'
-import '@/styles/globals.css'
 import { Layout } from '@/components/Layout'
 import { Analytics } from '@vercel/analytics/react'
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
    return (
@@ -15,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
             enableSystem={true}
             defaultTheme='system'
          >
-            <main className={cn(pretendard.className)}>
+            <main className={pretendard.className}>
                <Layout>
                   <Toaster />
                   <Component {...pageProps} />

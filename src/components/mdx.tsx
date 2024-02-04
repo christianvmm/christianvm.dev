@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { MDXRemote } from 'next-mdx-remote'
-import { CopyIcon } from '@radix-ui/react-icons'
+import { CopyIcon } from '@/icons'
 import { toast } from 'sonner'
 import { cn } from '@/utils/cn'
 
