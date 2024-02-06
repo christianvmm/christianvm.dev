@@ -4,9 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function PostItem({ post }: { post: Post }) {
+   const hasImage = Boolean(post.metadata.image)
+
    return (
       <li className='mb-6 group'>
-         <Link className='flex flex-col space-y-1' href={`/blog/${post.slug}`}>
+         <Link
+            className='flex flex-col space-y-1 cursor-alias'
+            href={`/blog/${post.slug}`}
+         >
             <div className='w-full flex flex-col'>
                <p className='font-semibold'>{post.metadata.title}</p>
 
@@ -20,17 +25,17 @@ export function PostItem({ post }: { post: Post }) {
             <div className='flex items-center absolute flex-column-reverse left-0 top-[6px]'>
                <div
                   role='dialog'
-                  className='rounded-md bg-[rgb(37,37,37)] relative overflow-hidden'
+                  className='rounded-md relative overflow-hidden border shadow-xl shadow-zinc-500/5
+                  bg-white border-zinc-200
+                   dark:bg-zinc-950 dark:border-zinc-900
+                  '
                   style={{
                      maxWidth: 'calc(100vw-24px)',
-                     boxShadow:
-                        'rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px',
                   }}
                >
                   <div>
                      <div className='w-[260px]'>
                         <div className='h-[36px]'></div>
-
                         <div className='flex items-center justify-center h-[26px] w-[26px] rounded-md flex-shrink-0 relative ml-4 mt-[-15px] mb-2'>
                            <span role='img'>
                               <svg
@@ -46,21 +51,30 @@ export function PostItem({ post }: { post: Post }) {
                         <div className='flex flex-col gap-1 px-4'>
                            <div className='flex flex-col gap-[2px]'>
                               <div
-                                 className='text-xs text-[rgb(90,90,90)] whitespace-nowrap
-                              overflow-hidden text-ellipsis mb-[-2px]
+                                 className='text-xs whitespace-nowrap overflow-hidden text-ellipsis mb-[-2px] text-zinc-400 dark:text-zinc-500
                            '
                               >
                                  <span>Post</span>
                               </div>
 
                               <div className='overflow-hidden'>
-                                 <span className='inline overflow-hidden font-semibold text-white text-sm'>
+                                 <span className='inline overflow-hidden font-semibold dark:text-white text-sm'>
                                     {post.metadata.title}
                                  </span>
                               </div>
                            </div>
 
-                           <div className='h-[86px] relative pointer-events-none overflow-hidden mb-4'>
+                           <div
+                              className='h-[86px] relative pointer-events-none overflow-hidden mb-4'
+                              style={{
+                                 WebkitMaskImage: hasImage
+                                    ? undefined
+                                    : 'linear-gradient(to bottom, black 30%, transparent 100%)',
+                                 maskImage: hasImage
+                                    ? undefined
+                                    : 'linear-gradient(to bottom, black 30%, transparent 100%)',
+                              }}
+                           >
                               <div className='h-full w-full'>
                                  {post.metadata.image ? (
                                     <Image
@@ -68,16 +82,15 @@ export function PostItem({ post }: { post: Post }) {
                                        height='86'
                                        alt='Image'
                                        loading='lazy'
-                                       src='/assets/setup/setup.png'
-                                       className='block object-cover rounded-md w-full h-[86px]'
-                                       style={{
-                                          border:
-                                             '1px solid rgba(255,255,255,0.13)',
-                                          objectPosition: 'center',
-                                       }}
+                                       src={post.metadata.image}
+                                       className='block object-cover rounded-md w-full h-[86px] border
+                                       border-zinc-200 dark:border-zinc-900 object-center
+                                       '
                                     />
                                  ) : (
-                                    <p className='text-xs'>{post.content}</p>
+                                    <p className='whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400'>
+                                       {post.content.substring(0, 280)}
+                                    </p>
                                  )}
                               </div>
                            </div>
