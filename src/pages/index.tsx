@@ -3,6 +3,8 @@ import { Badge } from '@/components/Badge'
 import { socialMediaLinks } from '@/consts'
 import { Tooltip } from '@/components/Tooltip'
 import Image from 'next/image'
+import { link } from '@/styles'
+import { cn } from '@/utils/cn'
 
 export const off = 'text-zinc-600 dark:text-zinc-400'
 export const supperof = '#71717A text-zinc-500'
@@ -82,7 +84,7 @@ export default function Home() {
                      <a
                         href='https://github.com/pedroslopez/whatsapp-web.js'
                         target='_blank'
-                        className='px-[0.1rem] font-medium text-black dark:text-white transition-all underline underline-offset-2'
+                        className={cn(link, 'font-medium')}
                      >
                         pedro&apos;s lopez whatsapp-web.js library
                      </a>

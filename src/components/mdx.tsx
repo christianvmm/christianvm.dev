@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { CopyIcon } from '@/icons'
 import { toast } from 'sonner'
 import { cn } from '@/utils/cn'
+import { link } from '@/styles'
 
 type TableProps = {
    data: {
@@ -40,14 +41,15 @@ function CustomLink(props: {
    children: string
    className: string
 }) {
-   const linkCn =
-      'px-[0.1rem] font-medium text-black dark:text-white transition-all underline underline-offset-2'
-
    const { href, className, ...rest } = props
 
    if (href.startsWith('/')) {
       return (
-         <Link href={href} {...rest} className={cn(linkCn, className)}>
+         <Link
+            href={href}
+            {...rest}
+            className={cn(link, 'font-medium', className)}
+         >
             {props.children}
          </Link>
       )
@@ -62,7 +64,7 @@ function CustomLink(props: {
          href={href}
          target='_blank'
          rel='noopener noreferrer'
-         className={cn(linkCn, className)}
+         className={cn(link, 'font-medium', className)}
          {...rest}
       />
    )
@@ -201,42 +203,7 @@ function Code({
    )
 }
 
-function slugify(str: { toString: () => string }) {
-   return str
-      .toString()
-      .toLowerCase()
-      .trim() // Remove whitespace from both ends of a string
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/&/g, '-and-') // Replace & with 'and'
-      .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-}
-
-function createHeading(level: number) {
-   // eslint-disable-next-line react/display-name
-   return ({ children }: { children: string }) => {
-      let slug = slugify(children)
-      return React.createElement(
-         `h${level}`,
-         { id: slug },
-         [
-            React.createElement('a', {
-               href: `#${slug}`,
-               key: `link-${slug}`,
-            }),
-         ],
-         children
-      )
-   }
-}
-
 let components = {
-   h1: createHeading(1),
-   h2: createHeading(2),
-   h3: createHeading(3),
-   h4: createHeading(4),
-   h5: createHeading(5),
-   h6: createHeading(6),
    Image: CustomImage,
    a: CustomLink,
    Callout,

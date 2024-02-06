@@ -1,12 +1,11 @@
 import { MusicWave } from '@/components/MusicWave'
 import { Tooltip } from '@/components/Tooltip'
 import { useCurrentlyListening } from '@/pages/api/getCurrentlyListening'
+import { link } from '@/styles'
 import { cn } from '@/utils/cn'
 
 export function CurrentlyListening() {
    const { data, error } = useCurrentlyListening()
-   const link =
-      'px-[0.1rem] font-semibold text-black dark:text-white transition-all underline underline-offset-2'
 
    if (error) {
       return null
@@ -35,7 +34,7 @@ export function CurrentlyListening() {
                   <div className='flex flex-col'>
                      <a
                         href={data.track.songUrl}
-                        className={cn(link, 'line-clamp-1')}
+                        className={cn(link, 'font-semibold line-clamp-1')}
                         target='_blank'
                      >
                         {data.track.title}

@@ -10,6 +10,7 @@ import {
 } from '@/lib/spotify'
 import Image from 'next/image'
 import { CurrentlyListening } from '@/features/music/components/CurrentlyListening'
+import { link } from '@/styles'
 
 type MusicProps = {
    artists: Artist[]
@@ -17,9 +18,6 @@ type MusicProps = {
 }
 
 export default function Music({ artists, tracks }: MusicProps) {
-   const link =
-      'px-[0.1rem] font-semibold text-black dark:text-white transition-all underline underline-offset-2'
-
    return (
       <>
          <Head title='music' description='My top tracks and artists.' />
@@ -49,7 +47,7 @@ export default function Music({ artists, tracks }: MusicProps) {
                            <div className='flex flex-col'>
                               <a
                                  href={songUrl}
-                                 className={link}
+                                 className={cn(link, ' font-semibold')}
                                  target='_blank'
                               >
                                  {title}
