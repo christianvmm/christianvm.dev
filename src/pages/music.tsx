@@ -76,7 +76,11 @@ export default function Music({ artists, tracks }: MusicProps) {
                         <Image width='64' height='64' src={image} alt={name} />
 
                         <div className='flex flex-col'>
-                           <a href={url} className={link} target='_blank'>
+                           <a
+                              href={url}
+                              className={cn(link, ' font-semibold')}
+                              target='_blank'
+                           >
                               {name}
                            </a>
 
