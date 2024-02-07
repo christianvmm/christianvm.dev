@@ -108,3 +108,10 @@ html {
 .expand {
    background-color: #61c554;
 }
+
+.post-item:hover {
+   .post-preview {
+      transition-delay: 400ms;
+      transition-duration: 250ms;
+   }
+}

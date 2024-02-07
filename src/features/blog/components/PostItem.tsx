@@ -7,7 +7,7 @@ export function PostItem({ post }: { post: Post }) {
    const hasImage = Boolean(post.metadata.image)
 
    return (
-      <li className='mb-6 group'>
+      <li className='post-item group mb-6'>
          <Link
             className='flex flex-col space-y-1 cursor-alias'
             href={`/blog/${post.slug}`}
@@ -21,7 +21,7 @@ export function PostItem({ post }: { post: Post }) {
             </div>
          </Link>
 
-         <div className='relative top-full pointer-events-none hidden group-hover:block'>
+         <div className='post-preview relative top-full pointer-events-none opacity-0 group-hover:opacity-100'>
             <div className='flex items-center absolute flex-column-reverse left-0 top-[6px]'>
                <div
                   role='dialog'
