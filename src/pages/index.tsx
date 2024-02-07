@@ -16,15 +16,42 @@ export default function Home() {
          <Head title='home' />
 
          <div className='max-w-lg mx-auto flex  flex-col gap-24'>
-            <header className='flex gap-8 flex-col'>
-               <Image
-                  alt="Christian Velez Medina's profile image"
-                  width='640'
-                  height='640'
-                  quality={100}
-                  src={`https://github.com/christianvmm.png`}
-                  className='rounded-full flex-1 w-full max-w-[170px] max-h-[170px]'
-               />
+            <header className='flex gap-6 flex-col'>
+               <figure className='relative w-full max-w-[170px] max-h-[170px]'>
+                  <Image
+                     alt="Christian Velez Medina's profile image"
+                     width='640'
+                     height='640'
+                     quality={100}
+                     src={`https://github.com/christianvmm.png`}
+                     className='rounded-full flex-1 w-full'
+                  />
+
+                  <div
+                     role='status'
+                     className='absolute right-0 top-3/4 flex group'
+                  >
+                     <i
+                        className='not-italic rounded-full h-8 w-8 text-center flex items-center justify-center
+                     bg-white border border-zinc-200 shadow-zinc-500/5 dark:bg-zinc-950 dark:border-zinc-900 cursor-help
+                     '
+                     >
+                        🦀
+                     </i>
+
+                     <Tooltip
+                        title='Learning Rust'
+                        position='top'
+                        className='sm:hidden'
+                     />
+
+                     <Tooltip
+                        title='Learning Rust'
+                        position='right'
+                        className='hidden sm:block translate-x-[85px]'
+                     />
+                  </div>
+               </figure>
 
                <div>
                   <h1 className='text-xl font-semibold'>
@@ -55,17 +82,13 @@ export default function Home() {
             </header>
 
             <section>
-               <div className='flex flex-col md:flex-row items-start gap-4 mb-3'>
-                  <div>
-                     <h2 className='font-semibold'>
-                        Frontend Developer at Estradata
-                     </h2>
+               <h1 className='font-semibold'>
+                  Frontend Developer at Estradata
+               </h1>
 
-                     <p className='text-sm'>2021 - now</p>
-                  </div>
-               </div>
+               <p className='text-sm'>2021 - now</p>
 
-               <div className='text-zinc-600 dark:text-zinc-400'>
+               <div className='text-zinc-600 dark:text-zinc-400 mt-3'>
                   <p className='mb-8'>
                      I started my professional journey with Estradata, where I
                      employed{' '}
