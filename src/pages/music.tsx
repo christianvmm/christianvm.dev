@@ -28,23 +28,7 @@ export default function Music({ artists, tracks }: MusicProps) {
             <section
                className={cn('w-full max-w-lg mx-auto order-2 lg:order-1')}
             >
-               <div className='flex justify-between items-center mb-8'>
-                  <h1 className='text-2xl font-semibold'>top tracks</h1>
-
-                  <div className='flex gap-1 items-center'>
-                     <p className='text-zinc-600 dark:text-zinc-400 text-xs'>
-                        stats by spotify api
-                     </p>
-
-                     <Image
-                        height={12}
-                        width={12}
-                        alt='Spotify'
-                        src='/assets/music/spotify-icon.png'
-                        className='w-3 h-3'
-                     />
-                  </div>
-               </div>
+               <h1 className='text-2xl font-semibold mb-8'>top tracks</h1>
 
                <ul className='flex flex-col gap-y-4'>
                   {tracks.map(
