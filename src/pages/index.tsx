@@ -58,10 +58,28 @@ export default function Home() {
                      Christian Velez Medina
                   </h1>
 
-                  <p className='text-zinc-600 dark:text-zinc-400 mb-4'>
+                  <p className='text-zinc-600 dark:text-zinc-400 mb-2'>
                      I&apos;m a 21 y/o Software Developer with 2 years of
                      experience. Currently studying CS at Universidad de
                      Guadalajara.
+                  </p>
+
+                  <p className='text-zinc-600 dark:text-zinc-400 mb-5'>
+                     stack:{' '}
+                     <Badge>
+                        <Tooltip title='Programming Language'>
+                           typescript
+                        </Tooltip>
+                     </Badge>{' '}
+                     <Badge>
+                        <Tooltip title='UI Library'>react</Tooltip>
+                     </Badge>{' '}
+                     <Badge>
+                        <Tooltip title='Javascript Backend'>node</Tooltip>
+                     </Badge>{' '}
+                     <Badge>
+                        <Tooltip title='React Framework'>next</Tooltip>
+                     </Badge>
                   </p>
 
                   <div className='flex gap-4'>
@@ -131,7 +149,7 @@ export default function Home() {
                   />
 
                   <p className='mb-8'>
-                     This system, utilized by over a thousand users, provided an
+                     This system, used by over a thousand users, provided an
                      alternative to the official WhatsApp Business platform.
                   </p>
 

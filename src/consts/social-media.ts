@@ -1,9 +1,4 @@
-import {
-   InstagramLogoIcon,
-   EnvelopeClosedIcon,
-   GitHubLogoIcon,
-   LinkedInLogoIcon,
-} from '@/icons'
+import { GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon } from '@/icons'
 
 export const socialMediaLinks = [
    {
@@ -20,10 +15,5 @@ export const socialMediaLinks = [
       href: 'https://www.linkedin.com/in/christian-velez-medina-330182218',
       name: 'LinkedIn',
       icon: LinkedInLogoIcon,
-   },
-   {
-      href: 'mailto:christian.gerardo_@outlook.es',
-      name: 'Email',
-      icon: EnvelopeClosedIcon,
    },
 ]

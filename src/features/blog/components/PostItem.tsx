@@ -8,10 +8,7 @@ export function PostItem({ post }: { post: Post }) {
 
    return (
       <li className='post-item group mb-6'>
-         <Link
-            className='flex flex-col space-y-1 cursor-alias'
-            href={`/blog/${post.slug}`}
-         >
+         <Link className='flex flex-col space-y-1' href={`/blog/${post.slug}`}>
             <div className='w-full flex flex-col'>
                <p className='font-semibold'>{post.metadata.title}</p>
 
