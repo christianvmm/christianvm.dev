@@ -100,9 +100,11 @@ export default function Home() {
             </header>
 
             <section>
-               <h1 className='font-semibold'>
+               <h1 className='font-semibold text-lg mb-4'>Work</h1>
+
+               <h2 className='font-semibold'>
                   Frontend Developer at Estradata
-               </h1>
+               </h2>
 
                <p className='text-sm'>2021 - now</p>
 
