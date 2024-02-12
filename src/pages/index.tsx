@@ -16,44 +16,44 @@ export default function Home() {
          <Head title='home' />
 
          <div className='max-w-lg mx-auto flex  flex-col gap-24'>
-            <header className='flex gap-6 flex-col'>
-               <figure className='relative w-full max-w-[170px] max-h-[170px]'>
-                  <Image
-                     alt="Christian Velez Medina's profile image"
-                     width='640'
-                     height='640'
-                     quality={100}
-                     src={`https://github.com/christianvmm.png`}
-                     className='rounded-full flex-1 w-full'
-                  />
+            <div>
+               <header>
+                  <figure className='relative w-full max-w-[170px] max-h-[170px] mb-6'>
+                     <Image
+                        alt="Christian Velez Medina's profile image"
+                        width='640'
+                        height='640'
+                        quality={100}
+                        src={`https://github.com/christianvmm.png`}
+                        className='rounded-full flex-1 w-full'
+                     />
 
-                  <div
-                     role='status'
-                     className='absolute right-0 top-3/4 flex group'
-                  >
-                     <i
-                        className='not-italic rounded-full h-8 w-8 text-center flex items-center justify-center
+                     <div
+                        role='status'
+                        className='absolute right-0 top-3/4 flex group'
+                     >
+                        <i
+                           className='not-italic rounded-full h-8 w-8 text-center flex items-center justify-center
                      bg-white border border-zinc-200 shadow-zinc-500/5 dark:bg-zinc-950 dark:border-zinc-900 cursor-help
                      '
-                     >
-                        🦀
-                     </i>
+                        >
+                           🦀
+                        </i>
 
-                     <Tooltip
-                        title='Learning Rust'
-                        position='top'
-                        className='sm:hidden'
-                     />
+                        <Tooltip
+                           title='Learning Rust'
+                           position='top'
+                           className='sm:hidden'
+                        />
 
-                     <Tooltip
-                        title='Learning Rust'
-                        position='right'
-                        className='hidden sm:block translate-x-[85px]'
-                     />
-                  </div>
-               </figure>
+                        <Tooltip
+                           title='Learning Rust'
+                           position='right'
+                           className='hidden sm:block translate-x-[85px]'
+                        />
+                     </div>
+                  </figure>
 
-               <div>
                   <h1 className='text-xl font-semibold'>
                      Christian Velez Medina
                   </h1>
@@ -64,7 +64,7 @@ export default function Home() {
                      Guadalajara.
                   </p>
 
-                  <p className='text-zinc-600 dark:text-zinc-400 mb-5'>
+                  <p className='text-zinc-600 dark:text-zinc-400 mb-8'>
                      stack:{' '}
                      <Badge>
                         <Tooltip title='Programming Language'>
@@ -81,23 +81,29 @@ export default function Home() {
                         <Tooltip title='React Framework'>next</Tooltip>
                      </Badge>
                   </p>
+               </header>
 
-                  <div className='flex gap-4'>
-                     {socialMediaLinks.map((link) => {
-                        return (
+               <ul className='flex gap-6 w-full'>
+                  {socialMediaLinks.map((link) => {
+                     return (
+                        <li key={link.name}>
                            <a
-                              key={link.name}
                               aria-label={`Christian Velez Medina's ${link.name}`}
                               href={link.href}
                               target='_blank'
+                              className={cn(
+                                 'text-zinc-400 transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
+                              )}
                            >
+                              {link.name}
+
                               <link.icon />
                            </a>
-                        )
-                     })}
-                  </div>
-               </div>
-            </header>
+                        </li>
+                     )
+                  })}
+               </ul>
+            </div>
 
             <section>
                <h1 className='font-semibold text-lg mb-4'>Work</h1>
