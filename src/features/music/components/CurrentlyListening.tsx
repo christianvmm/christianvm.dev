@@ -1,4 +1,5 @@
 import { MusicWave } from '@/components/MusicWave'
+import { Text } from '@/components/Text'
 import { Tooltip } from '@/components/Tooltip'
 import { useCurrentlyListening } from '@/pages/api/getCurrentlyListening'
 import { link } from '@/styles'
@@ -40,12 +41,12 @@ export function CurrentlyListening() {
                         {data.track.title}
                      </a>
 
-                     <p className='text-sm text-zinc-600 dark:text-zinc-400 line-clamp-1'>
+                     <Text className='text-sm line-clamp-1'>
                         {data.track.artists.map(({ name }) => name).join(', ')}
-                     </p>
-                     <p className='text-sm text-zinc-600 dark:text-zinc-400 line-clamp-1'>
+                     </Text>
+                     <Text className='text-sm line-clamp-1'>
                         {data.track.album}
-                     </p>
+                     </Text>
                   </div>
                </>
             ) : (

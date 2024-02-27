@@ -1,3 +1,4 @@
+import { Text } from '@/components/Text'
 import { Post } from '@/lib/blog'
 import { formatDate } from '@/utils/formatDate'
 import Image from 'next/image'
@@ -12,9 +13,7 @@ export function PostItem({ post }: { post: Post }) {
             <div className='w-full flex flex-col'>
                <p className='font-semibold'>{post.metadata.title}</p>
 
-               <p className='text-zinc-600 dark:text-zinc-400'>
-                  {formatDate(post.metadata.publishedAt, true)}
-               </p>
+               <Text>{formatDate(post.metadata.publishedAt, true)}</Text>
             </div>
          </Link>
 
@@ -85,9 +84,9 @@ export function PostItem({ post }: { post: Post }) {
                                        '
                                     />
                                  ) : (
-                                    <p className='whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400'>
+                                    <Text className='whitespace-pre-wrap text-xs'>
                                        {post.content.substring(0, 280)}
-                                    </p>
+                                    </Text>
                                  )}
                               </div>
                            </div>
