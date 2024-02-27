@@ -1,7 +1,5 @@
 import { Head } from '@/components/Head'
-import { Badge } from '@/components/Badge'
 import { socialMediaLinks } from '@/consts'
-import { Tooltip } from '@/components/Tooltip'
 import Image from 'next/image'
 import { link } from '@/styles'
 import { cn } from '@/utils/cn'
@@ -43,32 +41,20 @@ export default function Home() {
                      </div>
                   </figure>
 
-                  <h1 className='text-xl font-semibold'>
+                  <h1 className='text-xl font-semibold mb-1'>
                      Christian Velez Medina
                   </h1>
 
-                  <Text className='mb-2'>
-                     I&apos;m a 21 y/o Software Developer with 2 years of
-                     experience. Currently studying CS at Universidad de
-                     Guadalajara.
-                  </Text>
-
-                  <Text className='mb-8'>
-                     stack:{' '}
-                     <Badge>
-                        <Tooltip title='Programming Language'>
-                           typescript
-                        </Tooltip>
-                     </Badge>{' '}
-                     <Badge>
-                        <Tooltip title='UI Library'>react</Tooltip>
-                     </Badge>{' '}
-                     <Badge>
-                        <Tooltip title='Javascript Backend'>node</Tooltip>
-                     </Badge>{' '}
-                     <Badge>
-                        <Tooltip title='React Framework'>next</Tooltip>
-                     </Badge>
+                  <Text className='mb-4'>
+                     I&apos;m a 21 y/o{' '}
+                     <span className='text-black dark:text-white font-medium'>
+                        Software Developer
+                     </span>{' '}
+                     with{' '}
+                     <span className='text-black dark:text-white font-medium'>
+                        2 years of experience
+                     </span>
+                     . Currently studying CS at Universidad de Guadalajara.
                   </Text>
                </header>
 
@@ -95,7 +81,7 @@ export default function Home() {
             </div>
 
             <section>
-               <h1 className='font-semibold text-lg mb-4'>Work</h1>
+               <h1 className='font-semibold text-xl mb-4'>Work</h1>
 
                <div>
                   <h2 className='font-semibold'>
@@ -108,9 +94,9 @@ export default function Home() {
                      <Text className='mb-8'>
                         I started my professional journey with Estradata, where
                         I employed{' '}
-                        <Badge>
-                           <Tooltip title='UI Library'>React</Tooltip>
-                        </Badge>{' '}
+                        <span className='font-medium text-black dark:text-white'>
+                           React
+                        </span>{' '}
                         to craft essential user interfaces alongside a dedicated
                         team of 9. Together, we developed a versatile toolkit
                         that empowered government agencies at local, national,
@@ -164,7 +150,7 @@ export default function Home() {
             </section>
 
             <section>
-               <h1 className='font-semibold text-lg mb-4'>Projects</h1>
+               <h1 className='font-semibold text-xl  mb-4'>Projects</h1>
 
                <a
                   className='mb-16'
