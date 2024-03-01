@@ -88,9 +88,9 @@ export default function Home() {
                      Frontend Developer at Estradata
                   </h2>
 
-                  <p className='text-sm'>2021 - now</p>
+                  <p className='text-sm'>2022 - now</p>
 
-                  <div className=' mt-3'>
+                  <div className='mt-3'>
                      <Text className='mb-8'>
                         I started my professional journey with Estradata, where
                         I employed{' '}
@@ -150,11 +150,10 @@ export default function Home() {
             </section>
 
             <section>
-               <h1 className='font-semibold text-xl  mb-4'>Projects</h1>
+               <h1 className='font-semibold text-xl mb-4'>Projects</h1>
 
                <a
-                  className='mb-16'
-                  aria-label={`Finance app`}
+                  aria-label='Finance App'
                   href='https://finance-xi.vercel.app?email=johndoe@gmail.com&password=123456'
                   target='_blank'
                >
@@ -162,11 +161,31 @@ export default function Home() {
 
                   <Text className='mb-4'>Monitor finances with ease.</Text>
 
-                  <div className='overflow-hidden bg-zinc-100 dark:bg-zinc-900/70 flex h-96 items-center justify-center'>
+                  <div className='overflow-hidden bg-zinc-100 dark:bg-zinc-900/70 flex h-96 items-center justify-center mb-16'>
                      <Image
                         className='relative md:left-0 h-96 object-cover object-left pl-4'
                         src={'/assets/home/finance.png'}
                         alt='Finance Screenshot'
+                        width={1948}
+                        height={1072}
+                     />
+                  </div>
+               </a>
+
+               <a
+                  aria-label='FolderArt App'
+                  href='https://finance-xi.vercel.app?email=johndoe@gmail.com&password=123456'
+                  target='_blank'
+               >
+                  <h2 className='font-semibold'>FolderArt</h2>
+
+                  <Text className='mb-4'>Custom folder icons for macOS.</Text>
+
+                  <div className='overflow-hidden bg-zinc-100 dark:bg-zinc-900/70 flex h-96 items-center justify-center'>
+                     <Image
+                        className='relative md:left-0 h-96 object-cover object-left pl-4'
+                        src={'/assets/home/finance.png'}
+                        alt='FolderArt Screenshot'
                         width={1948}
                         height={1072}
                      />
