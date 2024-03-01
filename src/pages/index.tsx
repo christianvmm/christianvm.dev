@@ -172,7 +172,7 @@ export default function Home() {
                   </div>
                </a>
 
-               <a
+               {/* <a
                   aria-label='FolderArt App'
                   href='https://finance-xi.vercel.app?email=johndoe@gmail.com&password=123456'
                   target='_blank'
@@ -190,7 +190,7 @@ export default function Home() {
                         height={1072}
                      />
                   </div>
-               </a>
+               </a> */}
             </section>
          </div>
       </>
