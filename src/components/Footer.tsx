@@ -29,7 +29,7 @@ export default function Footer() {
       >
          <div className='max-w-lg mx-auto grid gap-y-14 grid-cols-2 md:grid-cols-3 justify-between'>
             <div>
-               <h6 className='font-semibold'>Pages</h6>
+               <h1 className='font-semibold'>Pages</h1>
 
                <ul className='mt-4 space-y-2'>
                   {pages.map((page) => {
@@ -40,7 +40,7 @@ export default function Footer() {
                         <li key={page.href}>
                            <Link
                               className={cn(
-                                 'text-zinc-400 transition-colors font-medium',
+                                 'text-zinc-400 transition-colors',
                                  current
                                     ? 'text-zinc-600 dark:text-zinc-400'
                                     : 'hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
 
             <div>
-               <h6 className='font-semibold'>Contact</h6>
+               <h1 className='font-semibold'>Contact</h1>
 
                <ul className='mt-4 space-y-2'>
                   {socialMediaLinks.map((link) => {
@@ -64,7 +64,7 @@ export default function Footer() {
                         <li key={link.href}>
                            <a
                               className={cn(
-                                 'text-zinc-400 transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
+                                 'text-zinc-400 transition-colors flex items-center gap-2 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
                               )}
                               href={link.href}
                               target='_blank'
