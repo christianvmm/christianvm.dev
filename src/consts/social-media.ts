@@ -1,4 +1,4 @@
-import { GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon } from '@/icons'
+import { GitHubLogoIcon, LinkedInLogoIcon } from '@/icons'
 
 export const socialMediaLinks = [
    {
@@ -10,10 +10,5 @@ export const socialMediaLinks = [
       href: 'https://github.com/christianvmm',
       name: 'GitHub',
       icon: GitHubLogoIcon,
-   },
-   {
-      href: 'https://www.instagram.com/christian.vm_/',
-      name: 'Instagram',
-      icon: InstagramLogoIcon,
-   },
+   }
 ]
