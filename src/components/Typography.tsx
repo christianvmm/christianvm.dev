@@ -2,7 +2,7 @@ import { cn } from '@/utils/cn'
 
 export const textOff = 'text-zinc-600 dark:text-zinc-400'
 
-export function Text({
+export function Typography({
    className,
    ...props
 }: React.ComponentPropsWithoutRef<'p'>) {
