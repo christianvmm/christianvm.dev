@@ -14,20 +14,8 @@ html {
 }
 
 /**
-
-
+   Blog
 **/
-
-:root {
-   --sh-keyword: #87a0be;
-   --sh-class: white;
-   --sh-string: #a8bd91;
-   --sh-identifier: white;
-   --sh-sign: #8fb7c7;
-   --sh-comment: #636e86;
-   --sh-jsxliterals: #ffffff;
-}
-
 .post {
    display: flex;
    flex-direction: column;
