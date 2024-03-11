@@ -11,7 +11,7 @@ import {
 import Image from 'next/image'
 import { CurrentlyListening } from '@/features/music/components/CurrentlyListening'
 import { link } from '@/styles'
-import { Text } from '@/components/Text'
+import { Typography } from '@/components/Typography'
 
 type MusicProps = {
    artists: Artist[]
@@ -54,11 +54,11 @@ export default function Music({ artists, tracks }: MusicProps) {
                                  {title}
                               </a>
 
-                              <Text>
+                              <Typography>
                                  {artists.map(({ name }) => name).join(', ')}
-                              </Text>
+                              </Typography>
 
-                              <Text>{album}</Text>
+                              <Typography>{album}</Typography>
                            </div>
                         </li>
                      )
@@ -84,7 +84,7 @@ export default function Music({ artists, tracks }: MusicProps) {
                               {name}
                            </a>
 
-                           <Text>{followers} followers</Text>
+                           <Typography>{followers} followers</Typography>
                         </div>
                      </li>
                   ))}

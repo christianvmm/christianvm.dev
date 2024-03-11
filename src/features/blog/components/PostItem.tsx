@@ -1,4 +1,4 @@
-import { Text } from '@/components/Text'
+import { Typography } from '@/components/Typography'
 import { Post } from '@/lib/blog'
 import { formatDate } from '@/utils/formatDate'
 import Image from 'next/image'
@@ -13,7 +13,7 @@ export function PostItem({ post }: { post: Post }) {
             <div className='w-full flex flex-col'>
                <p className='font-semibold'>{post.metadata.title}</p>
 
-               <Text>{formatDate(post.metadata.publishedAt, true)}</Text>
+               <Typography>{formatDate(post.metadata.publishedAt, true)}</Typography>
             </div>
          </Link>
 
@@ -84,9 +84,9 @@ export function PostItem({ post }: { post: Post }) {
                                        '
                                     />
                                  ) : (
-                                    <Text className='whitespace-pre-wrap text-xs'>
+                                    <Typography className='whitespace-pre-wrap text-xs'>
                                        {post.content.substring(0, 280)}
-                                    </Text>
+                                    </Typography>
                                  )}
                               </div>
                            </div>

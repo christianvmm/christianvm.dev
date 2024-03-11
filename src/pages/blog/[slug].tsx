@@ -9,7 +9,7 @@ import cn from 'classnames'
 import hljs from 'highlight.js'
 import { useEffect } from 'react'
 import 'highlight.js/styles/nord.css'
-import { Text } from '@/components/Text'
+import { Typography } from '@/components/Typography'
 
 type PostProps = {
    post: Omit<Post, 'content'> & {
@@ -57,7 +57,7 @@ export default function PostPage({ post }: PostProps) {
             <header className='mb-8 space-y-1'>
                <h1 className='text-2xl font-semibold'>{post.metadata.title}</h1>
 
-               <Text>{formatDate(post.metadata.publishedAt)}</Text>
+               <Typography>{formatDate(post.metadata.publishedAt)}</Typography>
             </header>
 
             <article className='post'>
