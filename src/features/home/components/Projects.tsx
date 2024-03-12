@@ -7,7 +7,7 @@ const projects = [
    {
       name: 'FolderArt',
       href: 'https://folderart.christianvm.dev',
-      description: 'Create custom folder icons for macOS',
+      description: 'Create custom folder icons for macOS.',
       src: FolderArt,
    },
    {

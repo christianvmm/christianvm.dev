@@ -1,12 +1,13 @@
 const SECOND = 1000
 const MINUTE = SECOND * 60
 const HOUR = MINUTE * 60
+const DAY_MS = HOUR * 24
 
 export function getTimeAgo(
    date: string | Date,
    dayPrecision?: boolean
 ): string {
-   let currentDate = new Date()
+   let currentDate = toUTC(new Date())
    let targetDate = typeof date === 'string' ? createDate(date) : date
 
    let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear()
@@ -22,7 +23,7 @@ export function getTimeAgo(
       return `${monthsAgo}mo ago`
    }
 
-   if (daysAgo > 0) {
+   if (daysAgo > 0 && diffMs > DAY_MS) {
       return `${daysAgo}d ago`
    }
 
@@ -46,7 +47,18 @@ function createDate(dateStr: string): Date {
       dateStr = `${dateStr}T00:00:00`
    }
 
-   return new Date(dateStr)
+   return toUTC(new Date(dateStr))
+}
+
+function toUTC(date: Date) {
+   return new Date(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      date.getUTCHours(),
+      date.getUTCMinutes(),
+      date.getUTCSeconds()
+   )
 }
 
 export function formatDate(date: string | Date, hideTimeAgo?: boolean): string {
