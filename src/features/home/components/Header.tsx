@@ -58,7 +58,7 @@ export function Header() {
                         href={link.href}
                         target='_blank'
                         className={cn(
-                           'text-zinc-400 transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
+                           'transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
                         )}
                      >
                         {link.name}
