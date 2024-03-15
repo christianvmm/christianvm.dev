@@ -41,10 +41,10 @@ export function CurrentlyListening() {
                         {data.track.title}
                      </a>
 
-                     <Typography className='text-sm line-clamp-1'>
+                     <Typography className='text-sm line-clamp-1 leading-normal'>
                         {data.track.artists.map(({ name }) => name).join(', ')}
                      </Typography>
-                     <Typography className='text-sm line-clamp-1'>
+                     <Typography className='text-sm line-clamp-1 leading-normal'>
                         {data.track.album}
                      </Typography>
                   </div>

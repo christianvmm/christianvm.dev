@@ -96,7 +96,7 @@ export default function Music({ artists, tracks }: MusicProps) {
                               {name}
                            </a>
 
-                           <Typography>{followers} followers</Typography>
+                           <Typography className='leading-normal'>{followers} followers</Typography>
                         </div>
                      </li>
                   ))}
