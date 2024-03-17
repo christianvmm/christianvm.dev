@@ -5,9 +5,9 @@ import { cn } from '@/utils/cn'
 import { supabase } from '@/utils/supabase'
 import { Tables } from '@/utils/supabase/types'
 import { FormEvent, useRef, useState } from 'react'
-import Image from 'next/image'
-import { ASK_EMAIL, ASK_NAME, INITIAL_MESSAGE } from './consts'
+import { INITIAL_MESSAGE, REPLY } from './consts'
 import { flushSync } from 'react-dom'
+import Image from 'next/image'
 
 export type Message = {
    id: number
@@ -25,17 +25,9 @@ function formatTime(date: Date) {
    })
 }
 
-// async function sleep(time = 200) {
-//    return new Promise<void>((resolve, reject) => {
-//       setTimeout(() => {
-//          resolve()
-//       }, time)
-//    })
-// }
-
 export function Chat() {
    const inputRef = useRef<HTMLInputElement>(null)
-   const savedMsgsRef = useRef(0)
+   const replyRef = useRef(0)
    const messagesListRef = useRef<HTMLUListElement>(null)
    const conversation = useRef<Tables<'conversation'> | null>(null)
    const [loading, setLoading] = useState(false)
@@ -49,8 +41,9 @@ export function Chat() {
       lastChild?.scrollIntoView({ behavior: 'smooth' })
    }
 
-   function addMessage(message: Message) {
-      setMessages((prev) => [...prev, message])
+   function addMessages(messages: Message[]) {
+      flushSync(() => setMessages((prev) => [...prev, ...messages]))
+      scrollToLastMessage()
    }
 
    async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -60,16 +53,17 @@ export function Chat() {
       setBody('')
       const id = Math.max(...messages.map((m) => m.id)) + 1
 
-      addMessage({
-         id,
-         body,
-         sentByUser: true,
-         createdAt: new Date(),
-      })
+      addMessages([
+         {
+            id,
+            body,
+            sentByUser: true,
+            createdAt: new Date(),
+         },
+      ])
 
-      if (savedMsgsRef.current > 10) {
+      if (replyRef.current > 10) {
          console.log('not saving anymore')
-         scrollToLastMessage()
          return
       }
 
@@ -100,17 +94,13 @@ export function Chat() {
             throw new Error("Couldn't create message")
          }
 
-         if (savedMsgsRef.current === 0) {
-            flushSync(() => {
-               addMessage(ASK_NAME)
-            })
-         } else if (savedMsgsRef.current === 1) {
-            flushSync(() => {
-               addMessage(ASK_EMAIL)
-            })
+         const reply = REPLY[replyRef.current]
+
+         if (reply) {
+            addMessages(reply)
          }
 
-         savedMsgsRef.current += 1
+         replyRef.current += 1
       } catch (err) {
          if (err instanceof Error) {
             console.log(err.message)
@@ -128,7 +118,6 @@ export function Chat() {
          )
       } finally {
          setLoading(false)
-         scrollToLastMessage()
 
          if (inputRef.current) {
             inputRef.current.focus()
