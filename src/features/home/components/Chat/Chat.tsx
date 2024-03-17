@@ -228,8 +228,10 @@ export function Chat() {
                            className={cn(
                               'w-full placeholder:text-zinc-400 disabled:cursor-not-allowed outline-0 outline-zinc-500/0 transition-all',
                               'focus:border-zinc-300',
-                              ' outline-offset-1 px-4 py-2 rounded-full bg-white border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700/50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-700 dark:focus:outline-none',
-                              final && 'border-green-500'
+                              ' outline-offset-1 px-4 py-2 rounded-full bg-white border dark:bg-zinc-800 dark:placeholder:text-zinc-500  dark:focus:outline-none',
+                              final
+                                 ? 'border-green-500'
+                                 : 'border-zinc-200 dark:border-zinc-700/50 dark:focus:border-zinc-700'
                            )}
                            onChange={(e) => setBody(e.target.value)}
                         />
