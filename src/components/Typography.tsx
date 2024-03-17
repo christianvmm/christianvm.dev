@@ -6,5 +6,5 @@ export function Typography({
    className,
    ...props
 }: React.ComponentPropsWithoutRef<'p'>) {
-   return <p className={cn(textOff, className)} {...props} />
+   return <p className={cn(textOff, 'leading-7', className)} {...props} />
 }

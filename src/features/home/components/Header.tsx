@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { socialMediaLinks } from '@/consts'
 import { cn } from '@/utils/cn'
 import { Typography } from '@/components/Typography'
+import { Chat } from './Chat'
 
 export function Header() {
    return (
@@ -37,15 +38,8 @@ export function Header() {
             </h1>
 
             <Typography className='mb-4'>
-               I&apos;m a 21 y/o{' '}
-               <span className='text-black dark:text-white font-medium'>
-                  Software Developer
-               </span>{' '}
-               with{' '}
-               <span className='text-black dark:text-white font-medium'>
-                  2 years of experience
-               </span>
-               . Currently studying CS at Universidad de Guadalajara.
+               I&apos;m a 21 y/o Software Developer with 2 years of experience.
+               Currently studying CS at Universidad de Guadalajara.
             </Typography>
          </header>
 
@@ -68,6 +62,10 @@ export function Header() {
                   </li>
                )
             })}
+
+            <li>
+               <Chat />
+            </li>
          </ul>
       </div>
    )
