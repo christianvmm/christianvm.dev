@@ -25,6 +25,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   <Toaster />
                   <Component {...pageProps} />
                </Layout>
+
+               <div id='root' />
             </div>
          </ThemeProvider>
 

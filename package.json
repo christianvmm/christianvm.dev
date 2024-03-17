@@ -10,6 +10,7 @@
       "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
    },
    "dependencies": {
+      "@supabase/supabase-js": "^2.39.8",
       "@vercel/analytics": "^1.1.2",
       "@vercel/og": "^0.6.2",
       "classnames": "^2.3.2",

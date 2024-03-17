@@ -12,7 +12,7 @@ type ResponseData = {
 }
 
 export default async function handler(
-   req: NextApiRequest,
+   _: NextApiRequest,
    res: NextApiResponse<ResponseData>
 ) {
    let token
