@@ -237,6 +237,7 @@ export function Chat() {
                         />
 
                         <button
+                           title='Send message'
                            type='submit'
                            disabled={loading}
                            className={cn(
