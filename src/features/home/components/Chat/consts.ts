@@ -53,3 +53,5 @@ export const REPLY: Record<number, Message[]> = {
       },
    ],
 }
+
+export const FINAL_MESSAGE_ID = -8

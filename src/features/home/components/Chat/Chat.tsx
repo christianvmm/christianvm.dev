@@ -1,11 +1,11 @@
 'use client'
 import { Portal } from '@/components/Portal'
-import { ChatBubbleIcon, PaperPlaneIcon } from '@/icons'
+import { ChatBubbleIcon, CheckCircledIcon, PaperPlaneIcon } from '@/icons'
 import { cn } from '@/utils/cn'
 import { supabase } from '@/utils/supabase'
 import { Tables } from '@/utils/supabase/types'
 import { FormEvent, useRef, useState } from 'react'
-import { INITIAL_MESSAGE, REPLY } from './consts'
+import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
 import { flushSync } from 'react-dom'
 import Image from 'next/image'
 
@@ -27,13 +27,14 @@ function formatTime(date: Date) {
 
 export function Chat() {
    const inputRef = useRef<HTMLInputElement>(null)
-   const replyRef = useRef(0)
+   const savedMsgRef = useRef(0)
    const messagesListRef = useRef<HTMLUListElement>(null)
    const conversation = useRef<Tables<'conversation'> | null>(null)
    const [loading, setLoading] = useState(false)
    const [open, setOpen] = useState(false)
    const [body, setBody] = useState('')
    const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE])
+   const final = messages.at(-1)?.id === FINAL_MESSAGE_ID
 
    function scrollToLastMessage() {
       if (!messagesListRef.current) return
@@ -48,7 +49,7 @@ export function Chat() {
 
    async function onSubmit(e: FormEvent<HTMLFormElement>) {
       e.preventDefault()
-      if (!body || loading) return
+      if (!body || loading || final) return
 
       setBody('')
       const id = Math.max(...messages.map((m) => m.id)) + 1
@@ -61,11 +62,6 @@ export function Chat() {
             createdAt: new Date(),
          },
       ])
-
-      if (replyRef.current > 10) {
-         console.log('not saving anymore')
-         return
-      }
 
       setLoading(true)
 
@@ -94,13 +90,13 @@ export function Chat() {
             throw new Error("Couldn't create message")
          }
 
-         const reply = REPLY[replyRef.current]
+         const reply = REPLY[savedMsgRef.current]
 
          if (reply) {
             addMessages(reply)
          }
 
-         replyRef.current += 1
+         savedMsgRef.current += 1
       } catch (err) {
          if (err instanceof Error) {
             console.log(err.message)
@@ -201,8 +197,19 @@ export function Chat() {
                         scrollbarGutter: 'stable',
                      }}
                   >
-                     {messages.map((message) => {
-                        return <ChatBubble message={message} key={message.id} />
+                     {messages.map((message, i) => {
+                        const nextMsg = messages[i + 1]
+                        const displayTime = nextMsg
+                           ? nextMsg.sentByUser !== message.sentByUser
+                           : true
+
+                        return (
+                           <ChatBubble
+                              message={message}
+                              key={message.id}
+                              displayTime={displayTime}
+                           />
+                        )
                      })}
                   </ul>
 
@@ -212,11 +219,17 @@ export function Chat() {
                            name='body'
                            ref={inputRef}
                            value={body}
-                           placeholder='Type a message...'
+                           disabled={final}
+                           placeholder={
+                              final
+                                 ? 'Your message was sent.'
+                                 : 'Type a message...'
+                           }
                            className={cn(
                               'w-full placeholder:text-zinc-400 disabled:cursor-not-allowed outline-0 outline-zinc-500/0 transition-all',
                               'focus:border-zinc-300',
-                              ' outline-offset-1 px-4 py-2 rounded-full bg-white border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700/50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-700 dark:focus:outline-none'
+                              ' outline-offset-1 px-4 py-2 rounded-full bg-white border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700/50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-700 dark:focus:outline-none',
+                              final && 'border-green-500'
                            )}
                            onChange={(e) => setBody(e.target.value)}
                         />
@@ -226,10 +239,11 @@ export function Chat() {
                            disabled={loading}
                            className={cn(
                               'absolute right-4 top-1/2 -translate-y-1/2 text-blue-500',
-                              'disabled:text-zinc-600 disabled:cursor-not-allowed'
+                              'disabled:text-zinc-600 disabled:cursor-not-allowed',
+                              final && 'text-green-500'
                            )}
                         >
-                           <PaperPlaneIcon />
+                           {final ? <CheckCircledIcon /> : <PaperPlaneIcon />}
                         </button>
                      </div>
                   </form>
@@ -240,7 +254,13 @@ export function Chat() {
    )
 }
 
-function ChatBubble({ message }: { message: Message }) {
+function ChatBubble({
+   message,
+   displayTime,
+}: {
+   message: Message
+   displayTime: boolean
+}) {
    return (
       <li
          key={message.id}
@@ -266,15 +286,17 @@ function ChatBubble({ message }: { message: Message }) {
             </div>
          </div>
 
-         <p
-            className={cn(
-               'text-zinc-400 text-xs mt-1.5',
-               message.sentByUser && 'text-end'
-            )}
-         >
-            {formatTime(message.createdAt)}
-            {message.error && ' · Error'}
-         </p>
+         {displayTime && (
+            <p
+               className={cn(
+                  'text-zinc-400 text-xs mt-1.5',
+                  message.sentByUser && 'text-end'
+               )}
+            >
+               {formatTime(message.createdAt)}
+               {message.error && ' · Error'}
+            </p>
+         )}
       </li>
    )
 }
