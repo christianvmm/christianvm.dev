@@ -11,7 +11,7 @@ export default function Blog({ posts }: BlogProps) {
    return (
       <>
          <Head
-            title='blog'
+            title='Blog'
             description='Thoughts on software development and random stuff. I mostly code in React and TypeScript.'
          />
 

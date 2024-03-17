@@ -21,7 +21,7 @@ type MusicProps = {
 export default function Music({ artists, tracks }: MusicProps) {
    return (
       <>
-         <Head title='music' description='My top tracks and artists.' />
+         <Head title='Music' description='My top tracks and artists.' />
 
          <div className={cn('flex flex-col flex-1')}>
             <CurrentlyListening />

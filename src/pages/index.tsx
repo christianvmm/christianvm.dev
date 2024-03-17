@@ -7,7 +7,7 @@ export const imagesBackground = '#F4F4F5 / white   dark:#111113'
 export default function Home() {
    return (
       <>
-         <Head title='home' />
+         <Head title='Home' />
 
          <div className='max-w-lg mx-auto flex flex-col gap-24 pb-10'>
             <Header />
