@@ -10,7 +10,7 @@ export function Head({ title, description, post }: HeadProps) {
    let ogImg = 'https://www.christianvm.dev/api/og'
    const desc =
       description || 'Personal website and blog of Christian Velez Medina.'
-   const pageTitle = post ? title : `christianvm • ${title}`
+   const pageTitle = post ? title : `${title} | Christian Velez Medina`
 
    if (title !== 'home') {
       ogImg += `?title=${title}`
