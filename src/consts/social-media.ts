@@ -2,7 +2,7 @@ import { GitHubLogoIcon, LinkedInLogoIcon } from '@/icons'
 
 export const socialMediaLinks = [
    {
-      href: 'https://www.linkedin.com/in/christian-velez-medina-330182218',
+      href: 'https://www.linkedin.com/in/christianvm',
       name: 'LinkedIn',
       icon: LinkedInLogoIcon,
    },
