@@ -8,7 +8,7 @@ import { Dock } from '@/components/Dock'
 import { Chat } from '@/features/home/components/Chat'
 import { useState } from 'react'
 
-export function Header() {
+export function Introduction() {
    const [open, setOpen] = useState(false)
 
    const apps = [
