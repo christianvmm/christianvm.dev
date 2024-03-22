@@ -1,4 +1,3 @@
-'use client'
 import { Typography } from '@/components/Typography'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'

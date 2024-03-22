@@ -1,10 +1,9 @@
-'use client'
 import { Portal } from '@/components/Portal'
-import { ChatBubbleIcon, CheckCircledIcon, PaperPlaneIcon } from '@/icons'
+import { CheckCircledIcon, PaperPlaneIcon } from '@/icons'
 import { cn } from '@/utils/cn'
 import { supabase } from '@/utils/supabase'
 import { Tables } from '@/utils/supabase/types'
-import { FormEvent, useRef, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
 import { flushSync } from 'react-dom'
 import Image from 'next/image'
@@ -25,13 +24,18 @@ function formatTime(date: Date) {
    })
 }
 
-export function Chat() {
+export function Chat({
+   open,
+   setOpen,
+}: {
+   open: boolean
+   setOpen: (v: boolean) => void
+}) {
    const inputRef = useRef<HTMLInputElement>(null)
    const savedMsgRef = useRef(0)
    const messagesListRef = useRef<HTMLUListElement>(null)
    const conversation = useRef<Tables<'conversation'> | null>(null)
    const [loading, setLoading] = useState(false)
-   const [open, setOpen] = useState(false)
    const [body, setBody] = useState('')
    const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE])
    const final = messages.at(-1)?.id === FINAL_MESSAGE_ID
@@ -121,139 +125,123 @@ export function Chat() {
       }
    }
 
-   function onOpen() {
-      if (typeof window !== 'undefined') {
+   useEffect(() => {
+      if (typeof window === 'undefined') return
+
+      if (open) {
          document.body.style.overflow = 'hidden'
-      }
-
-      setOpen(true)
-   }
-
-   function onClose() {
-      if (typeof window !== 'undefined') {
+      } else {
          document.body.style.overflow = 'auto'
       }
-
-      setOpen(false)
-   }
+   }, [open])
 
    return (
-      <>
-         <button
-            className='transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
-            onClick={() => onOpen()}
-         >
-            Chat
-            <ChatBubbleIcon />
-         </button>
-
-         <Portal>
-            <dialog
-               open={open}
-               className={
-                  'fixed bg-blue-500 bg-transparent inset-0 h-screen w-full px-6 flex items-center justify-center backdrop-brightness-50 transition-all ' +
-                  (open ? 'opacity-100 z-[200]' : 'opacity-0 z-[-1]')
+      <Portal>
+         <dialog
+            open={open}
+            className={
+               'fixed bg-blue-500 bg-transparent inset-0 h-screen w-full px-6 flex items-center justify-center backdrop-brightness-50 transition-all ' +
+               (open ? 'opacity-100 z-[200]' : 'opacity-0 z-[-1]')
+            }
+            onClick={(e) => {
+               if (e.target === e.currentTarget) {
+                  setOpen(false)
                }
+            }}
+         >
+            <div
                onClick={(e) => {
-                  if (e.target === e.currentTarget) {
-                     onClose()
-                  }
+                  e.stopPropagation()
                }}
+               className={cn(
+                  'py-4 border rounded-2xl pointer-events-auto w-full max-w-lg max-h-[80vh] overflow-y-auto h-[550px] transition-transform duration-200 shadow-xl shadow-zinc-500/5 flex flex-col',
+                  'bg-white  border-zinc-200',
+                  'dark:bg-zinc-950 dark:border-zinc-900',
+                  open ? 'scale-100' : 'scale-50'
+               )}
             >
-               <div
-                  onClick={(e) => {
-                     e.stopPropagation()
-                  }}
-                  className={cn(
-                     'py-4 border rounded-2xl pointer-events-auto w-full max-w-lg max-h-[80vh] overflow-y-auto h-[550px] transition-transform duration-200 shadow-xl shadow-zinc-500/5 flex flex-col',
-                     'bg-white  border-zinc-200',
-                     'dark:bg-zinc-950 dark:border-zinc-900',
-                     open ? 'scale-100' : 'scale-50'
-                  )}
-               >
-                  <header
-                     className='w-full pl-4  sticky top-0 pb-4 pr-4 flex items-center gap-4 border-b
+               <header
+                  className='w-full pl-4  sticky top-0 pb-4 pr-4 flex items-center gap-4 border-b
                   
                   border-zinc-100 dark:border-zinc-900'
-                  >
-                     <Image
-                        alt="Christian Velez Medina's profile image"
-                        width='640'
-                        height='640'
-                        quality={100}
-                        src={`https://github.com/christianvmm.png`}
-                        className='rounded-full  h-10 w-10'
+               >
+                  <Image
+                     alt="Christian Velez Medina's profile image"
+                     width='640'
+                     height='640'
+                     quality={100}
+                     src={`https://github.com/christianvmm.png`}
+                     className='rounded-full  h-10 w-10'
+                  />
+
+                  <p className='dark:text-white text-lg font-medium'>
+                     Christian
+                  </p>
+               </header>
+
+               <ul
+                  className='w-full h-full gap-6 pl-4  flex flex-col py-5 px-2 flex-1 overflow-y-auto'
+                  ref={messagesListRef}
+                  style={{
+                     scrollbarGutter: 'stable',
+                  }}
+               >
+                  {messages.map((message, i) => {
+                     const nextMsg = messages[i + 1]
+                     const displayTime = nextMsg
+                        ? nextMsg.sentByUser !== message.sentByUser
+                        : true
+
+                     return (
+                        <ChatBubble
+                           message={message}
+                           key={message.id}
+                           displayTime={displayTime}
+                        />
+                     )
+                  })}
+               </ul>
+
+               <form onSubmit={onSubmit} className='px-4 pt-4'>
+                  <div className='w-full relative'>
+                     <input
+                        name='body'
+                        ref={inputRef}
+                        value={body}
+                        disabled={final}
+                        placeholder={
+                           final
+                              ? 'Your message was sent.'
+                              : 'Type a message...'
+                        }
+                        className={cn(
+                           'w-full placeholder:text-zinc-400 disabled:cursor-not-allowed outline-0 outline-zinc-500/0 transition-all',
+                           'focus:border-zinc-300',
+                           ' outline-offset-1 px-4 py-2 rounded-full bg-white border dark:bg-zinc-800 dark:placeholder:text-zinc-500  dark:focus:outline-none',
+                           final
+                              ? 'border-green-500'
+                              : 'border-zinc-200 dark:border-zinc-700/50 dark:focus:border-zinc-700'
+                        )}
+                        onChange={(e) => setBody(e.target.value)}
                      />
 
-                     <p className='dark:text-white text-lg font-medium'>
-                        Christian
-                     </p>
-                  </header>
-
-                  <ul
-                     className='w-full h-full gap-6 pl-4  flex flex-col py-5 px-2 flex-1 overflow-y-auto'
-                     ref={messagesListRef}
-                     style={{
-                        scrollbarGutter: 'stable',
-                     }}
-                  >
-                     {messages.map((message, i) => {
-                        const nextMsg = messages[i + 1]
-                        const displayTime = nextMsg
-                           ? nextMsg.sentByUser !== message.sentByUser
-                           : true
-
-                        return (
-                           <ChatBubble
-                              message={message}
-                              key={message.id}
-                              displayTime={displayTime}
-                           />
-                        )
-                     })}
-                  </ul>
-
-                  <form onSubmit={onSubmit} className='px-4 pt-4'>
-                     <div className='w-full relative'>
-                        <input
-                           name='body'
-                           ref={inputRef}
-                           value={body}
-                           disabled={final}
-                           placeholder={
-                              final
-                                 ? 'Your message was sent.'
-                                 : 'Type a message...'
-                           }
-                           className={cn(
-                              'w-full placeholder:text-zinc-400 disabled:cursor-not-allowed outline-0 outline-zinc-500/0 transition-all',
-                              'focus:border-zinc-300',
-                              ' outline-offset-1 px-4 py-2 rounded-full bg-white border dark:bg-zinc-800 dark:placeholder:text-zinc-500  dark:focus:outline-none',
-                              final
-                                 ? 'border-green-500'
-                                 : 'border-zinc-200 dark:border-zinc-700/50 dark:focus:border-zinc-700'
-                           )}
-                           onChange={(e) => setBody(e.target.value)}
-                        />
-
-                        <button
-                           title='Send message'
-                           type='submit'
-                           disabled={loading}
-                           className={cn(
-                              'absolute right-4 top-1/2 -translate-y-1/2 text-blue-500',
-                              'disabled:text-zinc-600 disabled:cursor-not-allowed',
-                              final && 'text-green-500'
-                           )}
-                        >
-                           {final ? <CheckCircledIcon /> : <PaperPlaneIcon />}
-                        </button>
-                     </div>
-                  </form>
-               </div>
-            </dialog>
-         </Portal>
-      </>
+                     <button
+                        title='Send message'
+                        type='submit'
+                        disabled={loading}
+                        className={cn(
+                           'absolute right-4 top-1/2 -translate-y-1/2 text-blue-500',
+                           'disabled:text-zinc-600 disabled:cursor-not-allowed',
+                           final && 'text-green-500'
+                        )}
+                     >
+                        {final ? <CheckCircledIcon /> : <PaperPlaneIcon />}
+                     </button>
+                  </div>
+               </form>
+            </div>
+         </dialog>
+      </Portal>
    )
 }
 
