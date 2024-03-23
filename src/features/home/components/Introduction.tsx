@@ -1,56 +1,24 @@
 import Image from 'next/image'
-import Finder from '../../../../public/assets/home/finder.png'
-import Github from '../../../../public/assets/home/github.png'
-import Messages from '../../../../public/assets/home/messages.png'
-import Linkedin from '../../../../public/assets/home/linkedin.png'
 import { Typography } from '@/components/Typography'
-import { Dock } from '@/components/Dock'
 import { Chat } from '@/features/home/components/Chat'
 import { useState } from 'react'
+import { socialMediaLinks } from '@/consts'
+import { cn } from '@/utils/cn'
+import { ChatBubbleIcon } from '@/icons'
 
 export function Introduction() {
    const [open, setOpen] = useState(false)
 
-   const apps = [
-      {
-         id: 'finder',
-         icon: Finder,
-         name: 'Finder',
-      },
-      {
-         id: 'linkedin',
-         icon: Linkedin,
-         name: 'Linkedin',
-         href: 'https://www.linkedin.com/in/christianvm',
-      },
-      {
-         id: 'github',
-         icon: Github,
-         name: 'GitHub',
-         href: 'https://www.github.com/christianvmm',
-      },
-      {
-         id: 'chat',
-         icon: Messages,
-         name: 'Send me a message',
-         onClick: () => {
-            setOpen(true)
-         },
-      },
-   ]
-
    return (
-      <header className='text-center'>
-         <figure className='relative w-full max-w-[170px] max-h-[170px] mb-6 mx-auto'>
-            <Image
-               alt="Christian Velez Medina's profile image"
-               width='640'
-               height='640'
-               quality={100}
-               src='https://github.com/christianvmm.png'
-               className='rounded-full flex-1 w-full'
-            />
-         </figure>
+      <header>
+         <Image
+            alt="Christian Velez Medina's profile image"
+            width='640'
+            height='640'
+            quality={100}
+            src='https://github.com/christianvmm.png'
+            className='rounded-full flex-1 w-full max-w-[170px] max-h-[170px] mb-6'
+         />
 
          <h1 className='text-xl font-semibold mb-1'>Christian Velez Medina</h1>
 
@@ -59,11 +27,39 @@ export function Introduction() {
             Currently studying CS at Universidad de Guadalajara.
          </Typography>
 
-         <div className='flex'>
-            <Dock apps={apps} />
-         </div>
+         <ul className='flex gap-6 w-full'>
+            {socialMediaLinks.map((link) => {
+               return (
+                  <li key={link.name}>
+                     <a
+                        aria-label={`Christian Velez Medina's ${link.name}`}
+                        href={link.href}
+                        target='_blank'
+                        className={cn(
+                           'transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
+                        )}
+                     >
+                        {link.name}
 
-         <Chat open={open} setOpen={setOpen} />
+                        <link.icon />
+                     </a>
+                  </li>
+               )
+            })}
+
+            <li>
+               <button
+                  className={cn(
+                     'transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
+                  )}
+                  onClick={() => setOpen(true)}
+               >
+                  Chat
+                  <ChatBubbleIcon />
+               </button>
+               <Chat open={open} setOpen={setOpen} />
+            </li>
+         </ul>
       </header>
    )
 }

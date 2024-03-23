@@ -23,32 +23,35 @@ export function Projects() {
       <section>
          <h1 className='font-semibold text-xl mb-4'>Projects</h1>
 
-         {projects.map((project, i) => {
-            return (
-               <a
-                  key={i}
-                  aria-label={`Link to ${project.name} ap`}
-                  href={project.href}
-                  target='_blank'
-               >
-                  <h2 className='font-semibold'>{project.name}</h2>
+         <ul>
+            {projects.map((project, i) => {
+               return (
+                  <li key={i}>
+                     <a
+                        aria-label={`Link to ${project.name} ap`}
+                        href={project.href}
+                        target='_blank'
+                     >
+                        <h2 className='font-semibold'>{project.name}</h2>
 
-                  <Typography className='mb-4'>
-                     {project.description}
-                  </Typography>
+                        <Typography className='mb-4'>
+                           {project.description}
+                        </Typography>
 
-                  <div className='overflow-hidden bg-zinc-100 dark:bg-zinc-900/70 flex h-96 items-center justify-center mb-16'>
-                     <Image
-                        className='relative md:left-0 h-96 object-cover object-left pl-4'
-                        src={project.src}
-                        alt={`${project.name} screenshot`}
-                        width={1948}
-                        height={1072}
-                     />
-                  </div>
-               </a>
-            )
-         })}
+                        <div className='overflow-hidden bg-zinc-100 dark:bg-zinc-900/70 flex h-96 items-center justify-center mb-16'>
+                           <Image
+                              className='relative md:left-0 h-96 object-cover object-left pl-4'
+                              src={project.src}
+                              alt={`${project.name} screenshot`}
+                              width={1948}
+                              height={1072}
+                           />
+                        </div>
+                     </a>
+                  </li>
+               )
+            })}
+         </ul>
       </section>
    )
 }
