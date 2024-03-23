@@ -6,7 +6,7 @@ export default function Home() {
       <>
          <Head title='Home' />
 
-         <div className='max-w-lg mx-auto flex flex-col gap-24 pb-10'>
+         <div className='max-w-lg mx-auto flex flex-col gap-24 pb-24'>
             <Introduction />
             <Experience />
             <Projects />
