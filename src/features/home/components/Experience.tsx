@@ -9,13 +9,9 @@ export function Experience() {
          <h1 className='font-semibold text-xl mb-4'>Experience</h1>
 
          <div>
-            <div className='flex justify-between items-center'>
-               <h2 className='font-semibold'>
-                  Frontend Developer at Estradata
-               </h2>
+            <h2 className='font-semibold'>Frontend Developer at Estradata</h2>
 
-               <p className='text-sm'>2022 - now</p>
-            </div>
+            <p className='text-sm'>2022 - now</p>
 
             <div className='mt-3'>
                <Typography className='mb-8'>
