@@ -23,7 +23,7 @@ export default function Music({ artists, tracks }: MusicProps) {
       <>
          <Head title='Music' description='My top tracks and artists.' />
 
-         <div className={cn('flex flex-col flex-1')}>
+         <div className={cn('flex flex-col flex-1 animate-fadeXl')}>
             <CurrentlyListening />
 
             <section

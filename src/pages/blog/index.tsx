@@ -15,7 +15,7 @@ export default function Blog({ posts }: BlogProps) {
             description='Thoughts on software development and random stuff. I mostly code in React and TypeScript.'
          />
 
-         <div className='flex-1 max-w-lg mx-auto'>
+         <div className='flex-1 max-w-lg mx-auto animate-fadeXl'>
             <h1 className='text-2xl font-semibold mb-8'>blog</h1>
 
             <ul>
