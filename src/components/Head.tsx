@@ -14,6 +14,8 @@ export function Head({ title, description, post, og }: HeadProps) {
       og = '/assets/home/og.png'
    }
 
+   og = `${process.env.NEXT_PUBLIC_SITE_URL}${og}`
+
    return (
       <NextHead>
          <meta property='twitter:image' content={og} />
