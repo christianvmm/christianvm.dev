@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Typography } from '@/components/Typography'
-import FolderArt from '../../../../public/assets/home/folderart.png'
-import Finance from '../../../../public/assets/home/finance.png'
+import FolderArt from 'public/assets/home/folderart.png'
+import Finance from 'public/assets/home/finance.png'
 
 const projects = [
    {

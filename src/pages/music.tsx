@@ -21,13 +21,19 @@ type MusicProps = {
 export default function Music({ artists, tracks }: MusicProps) {
    return (
       <>
-         <Head title='Music' description='My top tracks and artists.' />
+         <Head
+            title='Music'
+            description='My top tracks and artists.'
+            og='/assets/music/og.png'
+         />
 
          <div className={cn('flex flex-col flex-1')}>
             <CurrentlyListening />
 
             <section
-               className={cn('w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeXl')}
+               className={cn(
+                  'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeXl'
+               )}
             >
                <h1 className='text-2xl font-semibold mb-8'>top tracks</h1>
 
@@ -96,7 +102,9 @@ export default function Music({ artists, tracks }: MusicProps) {
                               {name}
                            </a>
 
-                           <Typography className='leading-normal'>{followers} followers</Typography>
+                           <Typography className='leading-normal'>
+                              {followers} followers
+                           </Typography>
                         </div>
                      </li>
                   ))}

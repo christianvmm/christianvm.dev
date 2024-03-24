@@ -27,6 +27,7 @@ export default function PostPage({ post }: PostProps) {
          <Head
             title={post.metadata.title}
             description={post.metadata.summary}
+            og={post.metadata.og}
             post
          />
 

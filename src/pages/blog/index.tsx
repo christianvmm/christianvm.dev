@@ -13,6 +13,7 @@ export default function Blog({ posts }: BlogProps) {
          <Head
             title='Blog'
             description='Thoughts on software development and random stuff. I mostly code in React and TypeScript.'
+            og='/assets/blog/og.png'
          />
 
          <div className='flex-1 max-w-lg mx-auto animate-fadeXl'>
