@@ -8,7 +8,15 @@ type HeadProps = {
 }
 
 export function Head({ title, description, post, og }: HeadProps) {
-   const pageTitle = post ? title : `${title} | Christian Velez Medina`
+   let pageTitle
+
+   if (post) {
+      pageTitle = title
+   } else if (title === 'Home') {
+      pageTitle = 'Christian Velez Medina'
+   } else {
+      pageTitle = `${title} · Christian Velez Medina`
+   }
 
    if (!og) {
       og = '/assets/home/og.png'
