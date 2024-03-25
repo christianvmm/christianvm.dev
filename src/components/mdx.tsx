@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { MDXRemote } from 'next-mdx-remote'
-import { CopyIcon } from '@/icons'
-import { toast } from 'sonner'
+import { CheckIcon, CopyIcon } from '@/icons'
 import { cn } from '@/utils/cn'
 import { link } from '@/styles'
+import { Typography } from '@/components/Typography'
+import { useIsMounted } from '@/hooks'
 
 type TableProps = {
    data: {
@@ -45,11 +46,7 @@ function CustomLink(props: {
 
    if (href.startsWith('/')) {
       return (
-         <Link
-            href={href}
-            {...rest}
-            className={cn(link, 'font-medium', className)}
-         >
+         <Link href={href} {...rest} className={cn(link, className)}>
             {props.children}
          </Link>
       )
@@ -64,7 +61,7 @@ function CustomLink(props: {
          href={href}
          target='_blank'
          rel='noopener noreferrer'
-         className={cn(link, 'font-medium', className)}
+         className={cn(link, className)}
          {...rest}
       />
    )
@@ -154,18 +151,27 @@ function CodeBlock({
 > & {
    children: React.JSX.Element
 }) {
-   function copyCode() {
+   const [copied, setCopied] = useState(false)
+   const mounted = useIsMounted()
+
+   async function copyCode() {
       if (!children) return
 
       if (typeof children.props.children === 'string') {
-         navigator.clipboard.writeText(children.props.children)
-         toast.success('Code copied successfully')
+         await navigator.clipboard.writeText(children.props.children)
+         setCopied(true)
+
+         setTimeout(() => {
+            if (mounted.current) {
+               setCopied(false)
+            }
+         }, 1000)
       }
    }
 
    return (
       <pre
-         className='dark:selection:bg-zinc-800 text-sm h-full font-mono flex flex-col justify-between  bg-[#111113]'
+         className='dark:selection:bg-zinc-800 text-sm h-full font-mono flex flex-col justify-between  bg-zinc-900/70'
          {...props}
       >
          <div className='flex w-full justify-between p-3 pb-0'>
@@ -178,9 +184,9 @@ function CodeBlock({
             <button
                aria-label='Copy code'
                onClick={() => copyCode()}
-               className='text-white'
+               className='text-white  p-2 rounded-md hover:bg-zinc-700 transition-colors'
             >
-               <CopyIcon />
+               {copied ? <CheckIcon /> : <CopyIcon />}
             </button>
          </div>
 
@@ -188,37 +194,6 @@ function CodeBlock({
       </pre>
    )
 }
-
-// Article subtitle
-// function Title({ children, href }: { children: string; href: string }) {
-//    return (
-//       <h1 className='font-semibold text-xl mb-4'>
-//          <a href={href} className='hover:text-blue-400 group'>
-//             {children}
-//             <span className='inline-flex opacity-0 ml-2 group-hover:opacity-100'>
-//                <svg viewBox='0 0 16 16' height='0.7em' width='0.7em'>
-//                   <g strokeWidth='1.2' fill='none' stroke='currentColor'>
-//                      <path
-//                         fill='none'
-//                         strokeLinecap='round'
-//                         strokeLinejoin='round'
-//                         strokeMiterlimit='10'
-//                         d='M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698'
-//                      ></path>
-//                      <path
-//                         fill='none'
-//                         strokeLinecap='round'
-//                         strokeLinejoin='round'
-//                         strokeMiterlimit='10'
-//                         d='M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698'
-//                      ></path>
-//                   </g>
-//                </svg>
-//             </span>
-//          </a>
-//       </h1>
-//    )
-// }
 
 function Code({
    className,
@@ -234,9 +209,40 @@ function Code({
    )
 }
 
+function createHeading(as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
+   const Heading = ({ children }: { children: React.ReactNode }) => {
+      return (
+         <Typography as={as} variant='subtitle' className='mt-6'>
+            {children}
+         </Typography>
+      )
+   }
+
+   return Heading
+}
+
+function CustomP({ children, ...props }: React.ComponentPropsWithoutRef<'p'>) {
+   if (
+      React.isValidElement<{ children: React.ReactNode }>(children) &&
+      children.props.children
+   ) {
+      children = children.props.children
+   }
+
+   return <Typography {...props}>{children}</Typography>
+}
+
 let components = {
+   h1: createHeading('h1'),
+   h2: createHeading('h2'),
+   h3: createHeading('h3'),
+   h4: createHeading('h4'),
+   h5: createHeading('h5'),
+   h6: createHeading('h6'),
    Image: CustomImage,
    a: CustomLink,
+   p: CustomP,
+   Typography: CustomP,
    Callout,
    ProsCard,
    ConsCard,
