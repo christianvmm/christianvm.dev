@@ -54,7 +54,9 @@ export default function PostPage({ post }: PostProps) {
             }}
          />
 
-         <section className={cn('max-w-lg mx-auto flex-1 animate-fadeSm')}>
+         <section
+            className={cn('max-w-lg mx-auto flex-1 animate-fadeSm pb-24')}
+         >
             <header className='mb-8 space-y-1'>
                <Typography as='h1' variant='pageTitle'>
                   {post.metadata.title}

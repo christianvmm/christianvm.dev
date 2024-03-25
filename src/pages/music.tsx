@@ -32,7 +32,7 @@ export default function Music({ artists, tracks }: MusicProps) {
 
             <section
                className={cn(
-                  'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeSm'
+                  'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeSm pb-24'
                )}
             >
                <Typography as='h1' variant='pageTitle' className='mb-8'>

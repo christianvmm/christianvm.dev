@@ -17,7 +17,7 @@ export default function Blog({ posts }: BlogProps) {
             og='/assets/blog/og.png'
          />
 
-         <div className='flex-1 max-w-lg mx-auto animate-fadeSm'>
+         <div className='flex-1 max-w-lg mx-auto animate-fadeSm pb-24'>
             <Typography as='h1' variant='pageTitle' className='mb-8'>
                blog
             </Typography>
