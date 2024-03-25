@@ -1,40 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">christianvm.dev</h1>
 
-## Getting Started
+![FolderArt cover](public/cover.png) <br />
 
-First, run the development server:
+<div align="center">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<p align="center">
+    My personal website and blog.
+    <br />
+    <a href="https://www.christianvm.dev"><strong>Visit Demo »</strong></a>
+    <br />
+    <br />
+</p>
+
+![Next.js Badge](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=fff&style=flat)
+![Supabase Badge](https://img.shields.io/badge/Supabase-3FCE8E?logo=supabase&logoColor=fff&style=flat)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
+
+
+</div>
+
+<br />
+
+### Features
+
+-  [x] ▲ Server-Side Rendering (Next.js pages router)
+-  [x] 🎧  Integration with Spotify API
+-  [x] ⚡️ Supabase
+-  [x] 💬 "Contact me" Chat
+-  [x] 📄 MDX-based Blog
+
+<br />
+
+### Sitemap
+
+```tree
+├── / (Home)
+│   ├── Introduction (Chat)
+│   ├── Experience
+│   ├── Projects
+│   └── Tech Stack
+│
+├── /music
+│   ├── Top Tracks
+│   ├── Top Artists
+│
+└── /blog
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br />
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### 1. Clone the repo
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+git clone https://github.com/christianvmm/christianvm.dev.git
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### 2. Setup .env variables
 
-## Learn More
+<b>NEXT_PUBLIC_SITE_URL</b> <br />
+This variable should hold the URL/domain where your project is hosted. Replace the empty string with your project's URL.
 
-To learn more about Next.js, take a look at the following resources:
+<b>SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN</b> <br />
+These variables are required for accessing the Spotify API. You can obtain them by registering your application on the [Spotify Developer Dashboard](https://developer.spotify.com/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<b>NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY</b> <br />
+These variables are used to connect to the Supabase database. Obtain them by setting up a project on the [Supabase website](https://supabase.com/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+NEXT_PUBLIC_SITE_URL=""
 
-## Deploy on Vercel
+SPOTIFY_CLIENT_ID=""
+SPOTIFY_CLIENT_SECRET=""
+SPOTIFY_REFRESH_TOKEN=""
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXT_PUBLIC_SUPABASE_URL=""
+NEXT_PUBLIC_SUPABASE_ANON_KEY=""
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### 3. Install NPM packages
+
+```sh
+npm install
+```
+
+#### 4. Start Next.js server
+
+```sh
+npm run dev
+```
