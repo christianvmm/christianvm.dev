@@ -1,5 +1,3 @@
-<h1 align="center">christianvm.dev</h1>
-
 ![FolderArt cover](public/cover.png) <br />
 
 <div align="center">
@@ -7,7 +5,7 @@
 <p align="center">
     My personal website and blog.
     <br />
-    <a href="https://www.christianvm.dev"><strong>Visit Demo »</strong></a>
+    <a href="https://www.christianvm.dev" target="_blank"><strong>Visit Demo »</strong></a>
     <br />
     <br />
 </p>
