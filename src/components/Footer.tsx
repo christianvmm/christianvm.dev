@@ -29,7 +29,7 @@ export default function Footer() {
       >
          <div className='max-w-lg mx-auto grid gap-y-14 grid-cols-2 md:grid-cols-3 justify-between'>
             <div>
-               <h1 className='font-semibold'>Pages</h1>
+               <h1 className='font-medium'>Explore</h1>
 
                <ul className='mt-4 space-y-2'>
                   {pages.map((page) => {
@@ -40,10 +40,8 @@ export default function Footer() {
                         <li key={page.href}>
                            <Link
                               className={cn(
-                                 'text-zinc-400 transition-colors',
-                                 current
-                                    ? 'text-zinc-600 dark:text-zinc-400'
-                                    : 'hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
+                                 current && 'text-black dark:text-white',
+                                 'text-zinc-400 dark:text-zinc-600 transition-colors hover:text-black dark:hover:text-white'
                               )}
                               href={page.href}
                            >
@@ -56,7 +54,7 @@ export default function Footer() {
             </div>
 
             <div>
-               <h1 className='font-semibold'>Contact</h1>
+               <h1 className='font-medium'>Connect</h1>
 
                <ul className='mt-4 space-y-2'>
                   {socialMediaLinks.map((link) => {
@@ -64,14 +62,14 @@ export default function Footer() {
                         <li key={link.href}>
                            <a
                               className={cn(
-                                 'text-zinc-400 transition-colors flex items-center gap-2 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400'
+                                 'text-zinc-400 dark:text-zinc-600 transition-colors flex items-center gap-2',
+                                 link.color
                               )}
                               href={link.href}
                               target='_blank'
                            >
                               {link.name}
 
-                              <link.icon />
                            </a>
                         </li>
                      )

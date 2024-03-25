@@ -4,7 +4,6 @@ import { Chat } from '@/features/home/components/Chat'
 import { useState } from 'react'
 import { socialMediaLinks } from '@/consts'
 import { cn } from '@/utils/cn'
-import { ChatBubbleIcon } from '@/icons'
 
 export function Introduction() {
    const [open, setOpen] = useState(false)
@@ -38,12 +37,11 @@ export function Introduction() {
                         href={link.href}
                         target='_blank'
                         className={cn(
-                           'transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
+                           'transition-colors font-medium flex items-center gap-2',
+                           link.color
                         )}
                      >
                         {link.name}
-
-                        <link.icon />
                      </a>
                   </li>
                )
@@ -52,12 +50,11 @@ export function Introduction() {
             <li>
                <button
                   className={cn(
-                     'transition-colors font-medium flex items-center gap-2 hover:text-zinc-600 dark:hover:text-zinc-400'
+                     'transition-colors font-medium flex items-center gap-2 hover:text-green-600 dark:hover:text-green-400'
                   )}
                   onClick={() => setOpen(true)}
                >
                   Chat
-                  <ChatBubbleIcon />
                </button>
                <Chat open={open} setOpen={setOpen} />
             </li>
