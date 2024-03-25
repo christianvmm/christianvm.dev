@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app'
-import { Toaster } from 'sonner'
 import { pretendard } from '@/fonts/pretendard'
 import { ThemeProvider } from 'next-themes'
 import { Layout } from '@/components/Layout'
@@ -22,7 +21,6 @@ export default function App({ Component, pageProps }: AppProps) {
                )}
             >
                <Layout>
-                  <Toaster />
                   <Component {...pageProps} />
                </Layout>
 
