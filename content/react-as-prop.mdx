@@ -1,0 +1,137 @@
+---
+title: 'React "as" Prop Using TypeScript'
+publishedAt: '2024-03-25'
+summary: 'A dive into my daily tools to create software.'
+image: '/assets/react-as-prop/banner.png'
+og: '/assets/react-as-prop/og.png'
+---
+
+<Image
+   alt='Banner of blog post "React as Prop using TypeScript."'
+   src={`/assets/react-as-prop/banner.png`}
+   className='bg-zinc-100 dark:bg-zinc-900/70'
+   width={2400}
+   height={1260}
+   priority
+/>
+
+<Typography as='h1' variant='subtitle' className='mt-6'>
+   Introduction
+</Typography>
+
+<Typography className='mb-8'>
+   In the process of developing this site, I encountered that I was not having
+   consistency between the style in texts. So I decided to create a [Material
+   UI-like](https://mui.com/) Typography component.
+</Typography>
+
+<Typography className='mb-8'>
+   Material UI exposes an "as" prop in almost all components. This prop allows
+   developers to customize the HTML tag that the component will render.
+</Typography>
+
+<Typography>
+   React facilitates the implementation of this property in an easy way using a
+   variable, as shown below:
+</Typography>
+
+```jsx
+function Example() {
+   const Component = 'h1'
+
+   return <Component>This will render a h1</Component>
+}
+```
+
+<Typography className='mt-8'>
+   The only challenge is to implement this property while maintaining type
+   safety, because a &lt;h1&gt; tag does not have the same properties as an
+   &lt;a&gt; tag.
+</Typography>
+
+<Typography as='h1' variant='subtitle' className='mt-24'>
+   How to Type the "as" Prop Using TypeScript
+</Typography>
+
+<Typography>
+   Firstly, we need to create a type that receives a generic <b>E</b>. This
+   generic extends from <b>React.ElementType</b>, ensuring that <b>E</b> can
+   only take valid HTML tag names.
+</Typography>
+
+```tsx
+type PolymorphicProps<E extends React.ElementType> = {
+   as?: E
+}
+```
+
+<Typography className='mt-8'>
+   Next, we wrap our definition using the utility types that React provides to
+   complete the props for a specified element. Typically, we statically write
+   the tag, for example <b>React.ComponentPropsWithoutRef&lt;'p'&gt; </b> , but
+   since we are dealing with a dynamic tag, we pass the <b>E</b> type.
+</Typography>
+
+```tsx
+type PolymorphicProps<E extends React.ElementType> = React.PropsWithChildren<
+   React.ComponentPropsWithoutRef<E> & {
+      as?: E
+   }
+>
+```
+
+<Typography className='mt-8'>
+   Finally, we define the component Props using the <b>PolymorphicProps</b>{' '}
+   type. Now, the component can receive an optional "as" prop that will default
+   to a &lt;p&gt; tag, and the rest of properties will autocomplete. Custom
+   properties can be added using intersection types, for example <b>color</b>.
+</Typography>
+
+```tsx
+type PolymorphicProps<E extends React.ElementType> = React.PropsWithChildren<
+   React.ComponentPropsWithoutRef<E> & {
+      as?: E
+   }
+>
+
+type TypographyProps<T extends React.ElementType> = PolymorphicProps<T> & {
+   color?: string
+}
+
+export function Typography<T extends React.ElementType = 'p'>({
+   as,
+   color,
+   ...props
+}: TypographyProps<T>) {
+   const Component = as || 'p'
+   console.log(color)
+
+   return <Component {...props} />
+}
+```
+
+<Typography className='mt-8'>
+   This approach allows us to create a reusable component that has type safety,
+   keeps consistency between styles, and is easy to reuse.
+</Typography>
+
+```tsx
+function Social() {
+   return (
+      <section>
+         <Typography as='h1' className='mb-4'>
+            Connect
+         </Typography>
+
+         <Typography
+            as='a'
+            className='mb-4'
+            href='https://www.christianvm.dev/'
+            target='_blank'
+         >
+            Link to my website
+         </Typography>
+      </section>
+   )
+}
+```
