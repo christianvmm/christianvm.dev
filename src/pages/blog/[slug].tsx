@@ -54,9 +54,11 @@ export default function PostPage({ post }: PostProps) {
             }}
          />
 
-         <section className={cn('max-w-lg mx-auto flex-1 animate-fadeXl')}>
+         <section className={cn('max-w-lg mx-auto flex-1 animate-fadeSm')}>
             <header className='mb-8 space-y-1'>
-               <h1 className='text-2xl font-semibold'>{post.metadata.title}</h1>
+               <Typography as='h1' variant='pageTitle'>
+                  {post.metadata.title}
+               </Typography>
 
                <Typography>{formatDate(post.metadata.publishedAt)}</Typography>
             </header>

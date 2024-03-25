@@ -20,7 +20,9 @@ export function Introduction() {
             className='rounded-full flex-1 w-full max-w-[170px] max-h-[170px] mb-6'
          />
 
-         <h1 className='text-xl font-semibold mb-1'>Christian Velez Medina</h1>
+         <Typography as='h1' variant='title' className='mb-1'>
+            Christian Velez Medina
+         </Typography>
 
          <Typography className='mb-4'>
             I&apos;m a 21 y/o Software Developer with 2 years of experience.

@@ -41,14 +41,16 @@ export function Stack() {
 
    return (
       <section>
-         <h1 className='font-semibold text-xl mb-2'>Stack</h1>
+         <Typography as='h1' variant='title' className='mb-2'>
+            Stack
+         </Typography>
 
          <Typography className='mb-4'>
             I love to code using{' '}
             <span className={cn('font-medium', color)}>{text}</span>
          </Typography>
 
-         <ul className='flex  justify-center w-full  pl-10 bg-zinc-100 dark:bg-zinc-900/70 py-20'>
+         <ul className='flex justify-center w-full pl-10 bg-zinc-100 dark:bg-zinc-900/70 py-20'>
             {stack.map((tech, i) => {
                return (
                   <li key={i}>

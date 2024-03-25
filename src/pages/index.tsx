@@ -15,7 +15,7 @@ export default function Home() {
             og='/assets/home/og.png'
          />
 
-         <div className='max-w-lg mx-auto flex flex-col gap-24 pb-24 animate-fadeXl'>
+         <div className='max-w-lg mx-auto flex flex-col gap-24 pb-24 animate-fadeSm'>
             <Introduction />
             <Experience />
             <Projects />

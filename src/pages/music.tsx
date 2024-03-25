@@ -32,10 +32,12 @@ export default function Music({ artists, tracks }: MusicProps) {
 
             <section
                className={cn(
-                  'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeXl'
+                  'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeSm'
                )}
             >
-               <h1 className='text-2xl font-semibold mb-8'>top tracks</h1>
+               <Typography as='h1' variant='pageTitle' className='mb-8'>
+                  top tracks
+               </Typography>
 
                <ul className='flex flex-col gap-y-4'>
                   {tracks.map(
@@ -77,7 +79,9 @@ export default function Music({ artists, tracks }: MusicProps) {
                   )}
                </ul>
 
-               <h1 className='text-2xl font-semibold my-8'>top artists</h1>
+               <Typography as='h1' variant='pageTitle' className='my-8'>
+                  top artists
+               </Typography>
 
                <ul className='flex flex-col gap-y-4'>
                   {artists.map(({ name, url, image, followers, id }) => (

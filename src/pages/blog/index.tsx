@@ -2,6 +2,7 @@ import { Head } from '@/components/Head'
 import { GetStaticProps } from 'next'
 import { Post, getBlogPosts } from '@/lib/blog'
 import { PostItem } from '@/features/blog/components/PostItem'
+import { Typography } from '@/components/Typography'
 
 type BlogProps = {
    posts: Post[]
@@ -16,8 +17,10 @@ export default function Blog({ posts }: BlogProps) {
             og='/assets/blog/og.png'
          />
 
-         <div className='flex-1 max-w-lg mx-auto animate-fadeXl'>
-            <h1 className='text-2xl font-semibold mb-8'>blog</h1>
+         <div className='flex-1 max-w-lg mx-auto animate-fadeSm'>
+            <Typography as='h1' variant='pageTitle' className='mb-8'>
+               blog
+            </Typography>
 
             <ul>
                {posts

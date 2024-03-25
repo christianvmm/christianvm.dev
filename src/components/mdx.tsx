@@ -165,7 +165,7 @@ function CodeBlock({
 
    return (
       <pre
-         className='dark:selection:bg-zinc-800 text-sm h-full rounded-md font-mono flex flex-col justify-between  bg-[#111113]'
+         className='dark:selection:bg-zinc-800 text-sm h-full font-mono flex flex-col justify-between  bg-[#111113]'
          {...props}
       >
          <div className='flex w-full justify-between p-3 pb-0'>

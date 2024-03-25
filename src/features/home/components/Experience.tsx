@@ -6,12 +6,16 @@ import Image from 'next/image'
 export function Experience() {
    return (
       <section>
-         <h1 className='font-semibold text-xl mb-4'>Experience</h1>
+         <Typography as='h1' variant='title' className='mb-4'>
+            Experience
+         </Typography>
 
          <div>
-            <h2 className='font-semibold'>Frontend Developer at Estradata</h2>
+            <Typography as='h2' variant='subtitle'>
+               Frontend Developer at Estradata
+            </Typography>
 
-            <p className='text-sm'>2022 - now</p>
+            <Typography variant='small'>2022 - now</Typography>
 
             <div className='mt-3'>
                <Typography className='mb-8'>

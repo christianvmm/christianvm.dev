@@ -17,7 +17,7 @@ export function PostItem({ post }: { post: Post }) {
             </div>
          </Link>
 
-         <div className='post-preview relative top-full pointer-events-none opacity-0 group-hover:opacity-100'>
+         <div className='hidden md:block post-preview relative top-full pointer-events-none opacity-0 group-hover:opacity-100'>
             <div className='flex items-center absolute flex-column-reverse left-0 top-[6px]'>
                <div
                   role='dialog'

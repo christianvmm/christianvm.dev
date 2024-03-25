@@ -21,7 +21,9 @@ const projects = [
 export function Projects() {
    return (
       <section>
-         <h1 className='font-semibold text-xl mb-4'>Projects</h1>
+         <Typography as='h1' variant='title' className='mb-4'>
+            Projects
+         </Typography>
 
          <ul>
             {projects.map((project, i) => {
@@ -32,7 +34,9 @@ export function Projects() {
                         href={project.href}
                         target='_blank'
                      >
-                        <h2 className='font-semibold'>{project.name}</h2>
+                        <Typography as='h2' variant='subtitle'>
+                           {project.name}
+                        </Typography>
 
                         <Typography className='mb-4'>
                            {project.description}
