@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Typography } from '@/components/Typography'
 import { Chat } from '@/features/home/components/Chat'
 import { useState } from 'react'
@@ -9,23 +8,44 @@ export function Introduction() {
    const [open, setOpen] = useState(false)
 
    return (
-      <header>
-         <Image
-            alt="Christian Velez Medina's profile image"
-            width='640'
-            height='640'
-            quality={100}
-            src='https://github.com/christianvmm.png'
-            className='rounded-full flex-1 w-full max-w-[170px] max-h-[170px] mb-6'
-         />
+      <section>
+         <div className='w-full lg:mx-auto'>
+            <div className='w-full h-40 lg:h-48'>
+               <div
+                  className={`w-full h-full rounded-xl lg:rounded-2xl bg-[url('/assets/home/hospicio-cabanas.jpeg')] bg-cover bg-center relative`}
+               >
+                  <div className='w-full mx-auto absolute bottom-0 left-0 translate-y-20 pl-1 lg:pl-1 flex items-end'>
+                     <img
+                        src='https://github.com/christianvmm.png'
+                        className='aspect-square rounded-full w-28 border-4 border-light-zinc dark:border-black'
+                        alt="Christian Velez Medina's profile image"
+                     />
 
-         <Typography as='h1' variant='title' className='mb-1'>
-            Christian Velez Medina
+                     <div className='h-20 flex items-center pl-3'>
+                        <div>
+                           <Typography as='h1' variant='title'>
+                              Christian Velez Medina
+                           </Typography>
+
+                           <Typography className='leading-4'>
+                              Guadalajara, Jal.
+                           </Typography>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <Typography as='h1' variant='title' className='mb-4 mt-32'>
+            About
          </Typography>
 
          <Typography className='mb-4'>
             I&apos;m a 21 y/o Software Developer with 2 years of experience.
-            Currently studying CS at Universidad de Guadalajara.
+            Currently studying CS at Universidad de Guadalajara. I started
+            learning React back in August 2021 and landed my first job 6 months
+            later. I enjoy automating things, web development and TypeScript.
          </Typography>
 
          <ul className='flex gap-6 w-full'>
@@ -59,6 +79,6 @@ export function Introduction() {
                <Chat open={open} setOpen={setOpen} />
             </li>
          </ul>
-      </header>
+      </section>
    )
 }
