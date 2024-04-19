@@ -14,10 +14,10 @@ export function Introduction() {
                <div
                   className={`w-full h-full rounded-xl lg:rounded-2xl bg-[url('/assets/home/hospicio-cabanas.jpeg')] bg-cover bg-center relative`}
                >
-                  <div className='w-full mx-auto absolute bottom-0 left-0 translate-y-20 pl-1 lg:pl-1 flex items-end'>
+                  <div className='w-full mx-auto absolute bottom-0 left-0 translate-y-20 pl-1 flex items-end'>
                      <img
                         src='https://github.com/christianvmm.png'
-                        className='aspect-square rounded-full w-28 border-4 border-light-zinc dark:border-black'
+                        className='aspect-square rounded-full w-24 sm:w-28 border-4 border-light-zinc dark:border-black'
                         alt="Christian Velez Medina's profile image"
                      />
 
