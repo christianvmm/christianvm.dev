@@ -16,7 +16,6 @@ export const metadata: Metadata = {
    },
    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
    description,
-   icons: [{ rel: 'icon', url: '/favicon.ico' }],
    openGraph: {
       title: appName,
       description,
@@ -24,14 +23,6 @@ export const metadata: Metadata = {
       url: process.env.NEXT_PUBLIC_SITE_URL!,
       siteName: appName,
       type: 'website',
-      images: [
-         {
-            url: '/og.png',
-            width: 1200,
-            height: 630,
-            alt: `Banner de ${appName}`,
-         },
-      ],
    },
 }
 
