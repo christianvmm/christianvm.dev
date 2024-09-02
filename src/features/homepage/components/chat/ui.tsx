@@ -6,7 +6,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react'
 import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
 import { flushSync } from 'react-dom'
 import Image from 'next/image'
-import { Portal } from '@/components/portal'
+import { Portal } from '@/components/dom-portal'
 
 export type Message = {
    id: number
