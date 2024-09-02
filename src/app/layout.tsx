@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { AppProvider } from '@/provider'
 import { cn } from '@/utils/cn'
-import { Layout } from '@/components/app-layout'
+import { Layout } from '@/components/site-layout'
 import { pretendard } from '@/fonts/pretendard'
 import { type Metadata } from 'next'
 
