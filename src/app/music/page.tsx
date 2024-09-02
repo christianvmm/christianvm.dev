@@ -11,6 +11,8 @@ export const metadata: Metadata = {
    description: 'My top tracks and artists.',
 }
 
+export const revalidate = 60 * 60 * 24
+
 export default async function MusicPage() {
    const accessToken = await getAccessToken()
    const artists = await getTopArtists(accessToken)
@@ -96,15 +98,3 @@ export default async function MusicPage() {
       </div>
    )
 }
-
-// const AFTER_THREE_DAYS = 60 * 60 * 24 * 3
-// export const getStaticProps: GetStaticProps<MusicProps> = async () => {
-
-//    return {
-//       props: {
-//          artists,
-//          tracks,
-//       },
-//       revalidate: AFTER_THREE_DAYS,
-//    }
-// }

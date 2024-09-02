@@ -14,6 +14,7 @@ export async function getCurrentlyListening(accessToken: string) {
                Authorization: `Bearer ${accessToken}`,
                Accept: 'application/json',
             },
+            cache: 'no-cache',
          }
       )
       if (f.ok) {

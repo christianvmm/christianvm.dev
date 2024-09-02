@@ -13,6 +13,7 @@ export async function getRecentlyPlayedTracks(accessToken: string, limit = 10) {
                Authorization: `Bearer ${accessToken}`,
                Accept: 'application/json',
             },
+            cache: 'no-cache',
          }
       )
       if (f.ok) {
