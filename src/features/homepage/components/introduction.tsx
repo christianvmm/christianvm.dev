@@ -1,6 +1,6 @@
 import { Typography } from '@/components/typography'
 import { socialMediaLinks } from '@/consts'
-import { ChatButton } from '@/features/homepage/components/chat'
+import { ChatButton } from '@/features/homepage/components/chat/button'
 import { cn } from '@/utils/cn'
 
 export function Introduction() {

@@ -9,8 +9,6 @@ export async function incrementPostViews(slug: string) {
 
    if (!post.data) return
 
-   console.log('wtf')
-
    supabase
       .from('blog_posts')
       .update({
