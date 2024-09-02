@@ -3,16 +3,19 @@ import { supabase } from '@/utils/supabase'
 export async function incrementPostViews(slug: string) {
    const post = await supabase
       .from('blog_posts')
-      .select('view_count')
+      .select('*')
       .eq('slug', slug)
       .single()
 
    if (!post.data) return
 
-   supabase
+   const newCount = (post.data.view_count || 0) + 1
+
+   await supabase
       .from('blog_posts')
       .update({
-         view_count: (post.data.view_count ?? 0) + 1,
+         view_count: newCount,
       })
       .eq('slug', slug)
+      .select()
 }

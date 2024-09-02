@@ -3,9 +3,9 @@ import { formatDate } from '@/utils/format-date'
 import { notFound } from 'next/navigation'
 import { getBlogPosts } from '@/lib/blog'
 import { Typography } from '@/components/ui/typography'
+import { Views } from '@/features/blog/components/views'
 import cn from 'classnames'
 import type { Metadata } from 'next'
-import { incrementPostViews } from '@/features/blog/actions/increment-post-views'
 
 type PostProps = {
    params: {
@@ -37,8 +37,6 @@ export default async function PostPage({ params }: PostProps) {
    const post = getBlogPosts().find((p) => p.slug === params?.slug)
 
    if (!post) notFound()
-
-   incrementPostViews(post.slug)
 
    return (
       <>
@@ -73,7 +71,13 @@ export default async function PostPage({ params }: PostProps) {
                   {post.metadata.title}
                </Typography>
 
-               <Typography>{formatDate(post.metadata.publishedAt)}</Typography>
+               <div className='flex justify-between'>
+                  <Typography>
+                     {formatDate(post.metadata.publishedAt)}
+                  </Typography>
+
+                  <Views slug={post.slug} />
+               </div>
             </header>
 
             <article className='post'>
