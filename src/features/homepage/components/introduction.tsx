@@ -1,4 +1,4 @@
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import { socialMediaLinks } from '@/consts'
 import { ChatButton } from '@/features/homepage/components/chat/button'
 import { cn } from '@/utils/cn'

@@ -1,4 +1,4 @@
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import React from 'react'
 
 export function CustomP({

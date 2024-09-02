@@ -1,7 +1,7 @@
 import { CurrentlyListening } from '@/features/music/components/currently-listening'
 import { getTopArtists, getTopTracks, getAccessToken } from '@/lib/spotify'
 import { link } from '@/styles'
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import cn from 'classnames'
 import Image from 'next/image'
 import type { Metadata } from 'next'

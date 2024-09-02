@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import FolderArt from '../../../../public/assets/home/folderart.png'
 import Finance from '../../../../public/assets/home/finance.png'
 

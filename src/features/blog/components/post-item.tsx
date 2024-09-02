@@ -1,4 +1,4 @@
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import { Post } from '@/lib/blog'
 import { formatDate } from '@/utils/format-date'
 import Image from 'next/image'

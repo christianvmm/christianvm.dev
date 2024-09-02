@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import { cn } from '@/utils/cn'
 import { useState } from 'react'
 

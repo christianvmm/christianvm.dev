@@ -1,5 +1,5 @@
 import { getBlogPosts } from '@/lib/blog'
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import { PostItem } from '@/features/blog/components/post-item'
 import type { Metadata } from 'next'
 

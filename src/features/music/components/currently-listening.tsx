@@ -1,6 +1,6 @@
 import { MusicWave } from '@/features/music/components/music-wave'
-import { Typography } from '@/components/typography'
-import { Tooltip } from '@/components/tooltip'
+import { Typography } from '@/components/ui/typography'
+import { Tooltip } from '@/components/ui/tooltip'
 import { link } from '@/styles'
 import { cn } from '@/utils/cn'
 import { getCurrentlyListening, Track } from '@/lib/spotify'

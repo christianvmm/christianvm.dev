@@ -1,4 +1,4 @@
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components/ui/typography'
 import { link } from '@/styles'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'
