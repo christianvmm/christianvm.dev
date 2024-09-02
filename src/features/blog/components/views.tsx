@@ -5,8 +5,6 @@ export const dynamic = 'force-dynamic'
 
 export async function Views({ slug }: { slug: string }) {
    unstable_noStore()
-
-   await incrementPostViews(slug)
-
+   incrementPostViews(slug)
    return null
 }

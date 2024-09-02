@@ -6,6 +6,7 @@ import { Typography } from '@/components/ui/typography'
 import { Views } from '@/features/blog/components/views'
 import cn from 'classnames'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 type PostProps = {
    params: {
@@ -76,7 +77,9 @@ export default async function PostPage({ params }: PostProps) {
                      {formatDate(post.metadata.publishedAt)}
                   </Typography>
 
-                  <Views slug={post.slug} />
+                  <Suspense fallback={null}>
+                     <Views slug={post.slug} />
+                  </Suspense>
                </div>
             </header>
 
