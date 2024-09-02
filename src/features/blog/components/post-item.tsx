@@ -13,7 +13,9 @@ export function PostItem({ post }: { post: Post }) {
             <div className='w-full flex flex-col'>
                <p className='font-semibold'>{post.metadata.title}</p>
 
-               <Typography>{formatDate(post.metadata.publishedAt, true)}</Typography>
+               <Typography>
+                  {formatDate(post.metadata.publishedAt, true)}
+               </Typography>
             </div>
          </Link>
 

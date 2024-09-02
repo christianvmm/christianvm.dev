@@ -7,12 +7,9 @@ export async function incrementPostViews(slug: string) {
       .eq('slug', slug)
       .single()
 
-
-   
    if (!post.data) return
 
    console.log('wtf')
-
 
    supabase
       .from('blog_posts')

@@ -70,7 +70,6 @@ export default function Footer() {
                               target='_blank'
                            >
                               {link.name}
-
                            </a>
                         </li>
                      )
