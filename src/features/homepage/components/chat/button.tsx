@@ -2,7 +2,7 @@
 
 import { cn } from '@/utils/cn'
 import { useState } from 'react'
-import { Chat } from '@/features/home/components/chat'
+import { Chat } from './ui'
 
 export function ChatButton() {
    const [open, setOpen] = useState(false)

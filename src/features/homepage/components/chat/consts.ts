@@ -1,4 +1,4 @@
-import type { Message } from './chat'
+import type { Message } from './ui'
 
 export const INITIAL_MESSAGE: Message = {
    id: -1,
