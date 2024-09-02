@@ -31,6 +31,7 @@ export function Typography<T extends React.ElementType = 'p'>({
    ...props
 }: TypographyProps<T>) {
    const Component = as || 'p'
+   
 
    return <Component className={cn(variants[variant], className)} {...props} />
 }
