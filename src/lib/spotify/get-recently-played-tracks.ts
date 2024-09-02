@@ -16,6 +16,7 @@ export async function getRecentlyPlayedTracks(accessToken: string, limit = 10) {
             cache: 'no-cache',
          }
       )
+
       if (f.ok) {
          response = await f.json()
       } else {

@@ -1,6 +1,8 @@
 import { z } from 'zod'
 
-export async function getAccessToken(): Promise<string> {
+export async function getAccessToken(opts?: {
+   cache: RequestCache
+}): Promise<string> {
    const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN as string
    const clientId = process.env.SPOTIFY_CLIENT_ID as string
    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET as string
@@ -17,6 +19,7 @@ export async function getAccessToken(): Promise<string> {
          grant_type: 'refresh_token',
          refresh_token: refreshToken,
       }),
+      ...opts,
    })
 
    const { access_token } = z

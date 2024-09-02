@@ -20,7 +20,7 @@ export default async function MusicPage() {
 
    return (
       <div className={cn('flex flex-col flex-1')}>
-         <CurrentlyListening accessToken={accessToken} />
+         <CurrentlyListening />
 
          <section
             className={cn(

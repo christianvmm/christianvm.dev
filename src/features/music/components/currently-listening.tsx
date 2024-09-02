@@ -3,16 +3,12 @@ import { Typography } from '@/components/ui/typography'
 import { Tooltip } from '@/components/ui/tooltip'
 import { link } from '@/styles'
 import { cn } from '@/utils/cn'
-import { getCurrentlyListening, Track } from '@/lib/spotify'
+import { getAccessToken, getCurrentlyListening, Track } from '@/lib/spotify'
 import { getRecentlyPlayedTracks } from '@/lib/spotify/get-recently-played-tracks'
 import { getTimeAgo } from '@/utils/format-date'
 import { Suspense } from 'react'
 
-export async function CurrentlyListening({
-   accessToken,
-}: {
-   accessToken: string
-}) {
+export async function CurrentlyListening() {
    return (
       <div
          className={cn(
@@ -23,7 +19,7 @@ export async function CurrentlyListening({
       >
          <div className='flex items-center gap-4 h-full'>
             <Suspense fallback={<LoadingTrack />}>
-               <TrackPlaying accessToken={accessToken} />
+               <TrackPlaying />
             </Suspense>
 
             <MusicWave className='ml-auto' />
@@ -46,7 +42,9 @@ function LoadingTrack() {
    )
 }
 
-async function TrackPlaying({ accessToken }: { accessToken: string }) {
+async function TrackPlaying() {
+   const accessToken = await getAccessToken({ cache: 'no-cache' })
+
    let track: Track | null = null
    let title = ''
 
