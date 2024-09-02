@@ -1,4 +1,3 @@
-import { Head } from '@/components/Head'
 import {
    Experience,
    Introduction,
@@ -6,14 +5,14 @@ import {
    Stack,
 } from '@/features/home/components'
 
-export default function Home() {
+export default function HomePage() {
    return (
       <>
-         <Head
+         {/* <Head
             title='Home'
             description='Personal website and blog of Christian Velez Medina.'
             og='/assets/home/og.png'
-         />
+         /> */}
 
          <div className='max-w-lg mx-auto flex flex-col gap-20 pb-24 animate-fadeSm'>
             <Introduction />

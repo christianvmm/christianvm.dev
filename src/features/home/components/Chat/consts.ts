@@ -1,4 +1,4 @@
-import { Message } from './Chat'
+import type { Message } from './chat'
 
 export const INITIAL_MESSAGE: Message = {
    id: -1,

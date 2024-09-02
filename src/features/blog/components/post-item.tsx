@@ -1,6 +1,6 @@
-import { Typography } from '@/components/Typography'
+import { Typography } from '@/components/typography'
 import { Post } from '@/lib/blog'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/format-date'
 import Image from 'next/image'
 import Link from 'next/link'
 

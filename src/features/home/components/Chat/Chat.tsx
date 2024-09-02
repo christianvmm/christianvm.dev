@@ -1,4 +1,3 @@
-import { Portal } from '@/components/Portal'
 import { CheckCircledIcon, PaperPlaneIcon } from '@/icons'
 import { cn } from '@/utils/cn'
 import { supabase } from '@/utils/supabase'
@@ -7,6 +6,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react'
 import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
 import { flushSync } from 'react-dom'
 import Image from 'next/image'
+import { Portal } from '@/components/portal'
 
 export type Message = {
    id: number

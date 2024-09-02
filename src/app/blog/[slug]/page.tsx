@@ -1,36 +1,47 @@
-import { Head } from '@/components/Head'
 import { CustomMDX } from '@/components/mdx'
-import { type Post, getBlogPosts } from '@/lib/blog'
-import { formatDate } from '@/utils/formatDate'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { formatDate } from '@/utils/format-date'
+import { notFound } from 'next/navigation'
+import { getBlogPosts } from '@/lib/blog'
+import { Typography } from '@/components/typography'
 import cn from 'classnames'
-import hljs from 'highlight.js'
-import { useEffect } from 'react'
-import 'highlight.js/styles/nord.css'
-import { Typography } from '@/components/Typography'
+import type { Metadata } from 'next'
+import { incrementPostViews } from '@/features/blog/actions/increment-post-views'
 
 type PostProps = {
-   post: Omit<Post, 'content'> & {
-      content: MDXRemoteSerializeResult
+   params: {
+      slug?: string
    }
 }
 
-export default function PostPage({ post }: PostProps) {
-   useEffect(() => {
-      hljs.highlightAll()
-   }, [])
+export function generateMetadata({ params }: PostProps): Metadata {
+   const post = getBlogPosts().find((p) => p.slug === params?.slug)
+
+   if (!post) notFound()
+
+   return {
+      title: {
+         absolute: post.metadata.title,
+      },
+      description: post.metadata.summary,
+      openGraph: {
+         type: 'article',
+         title: post.metadata.title,
+         description: post.metadata.summary,
+         publishedTime: post.metadata.publishedAt,
+         images: [post.metadata.og],
+      },
+   }
+}
+
+export default async function PostPage({ params }: PostProps) {
+   const post = getBlogPosts().find((p) => p.slug === params?.slug)
+
+   if (!post) notFound()
+
+   incrementPostViews(post.slug)
 
    return (
       <>
-         <Head
-            title={post.metadata.title}
-            description={post.metadata.summary}
-            og={post.metadata.og}
-            post
-         />
-
          <script
             type='application/ld+json'
             suppressHydrationWarning
@@ -66,37 +77,18 @@ export default function PostPage({ post }: PostProps) {
             </header>
 
             <article className='post'>
-               {post.content && <CustomMDX {...post.content} />}
+               <CustomMDX source={post.content} />
             </article>
          </section>
       </>
    )
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
    const posts = getBlogPosts()
-   const paths = posts.map((post) => ({
-      params: {
-         slug: post.slug,
-      },
+
+   return posts.map((post) => ({
+      slug: post.slug,
    }))
-
-   return {
-      paths,
-      fallback: false,
-   }
-}
-
-export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
-   const post = getBlogPosts().find((p) => p.slug === params?.slug) as Post
-   const mdxContent = await serialize(post!.content)
-
-   return {
-      props: {
-         post: {
-            ...post,
-            content: mdxContent,
-         },
-      },
-   }
 }

@@ -1,6 +1,7 @@
+'use client'
+import Link from 'next/link'
 import { socialMediaLinks } from '@/consts'
 import { cn } from '@/utils/cn'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const pages = [

@@ -1,1 +1,1 @@
-export * from './useIsMounted'
+export * from './use-is-mounted'

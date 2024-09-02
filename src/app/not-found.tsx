@@ -1,10 +1,6 @@
-import { Head } from '@/components/Head'
-
 export default function Home() {
    return (
       <div className='flex flex-col justify-center items-center py-40'>
-         <Head title='Oops!' description='This page could not be found.' />
-
          <div className='flex items-center'>
             <h1
                style={{

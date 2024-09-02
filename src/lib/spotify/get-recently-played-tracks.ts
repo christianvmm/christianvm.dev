@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { formatTrack, trackModel } from './getTopTracks'
+import { formatTrack, trackModel } from './get-top-tracks'
 
 const DEFAULT_MSG = 'Error trying to get recently played tracks'
 export async function getRecentlyPlayedTracks(accessToken: string, limit = 10) {

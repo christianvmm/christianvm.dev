@@ -1,4 +1,4 @@
-import { getFollowersByArtistId } from './getFollowersByArtistId'
+import { getFollowersByArtistId } from './get-followers-by-artist-id'
 import { z } from 'zod'
 
 export type Artist = {

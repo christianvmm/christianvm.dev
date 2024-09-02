@@ -1,12 +1,9 @@
-import { Typography } from '@/components/Typography'
-import { Chat } from '@/features/home/components/Chat'
-import { useState } from 'react'
+import { Typography } from '@/components/typography'
 import { socialMediaLinks } from '@/consts'
+import { ChatButton } from '@/features/home/components/chat/chat-button'
 import { cn } from '@/utils/cn'
 
 export function Introduction() {
-   const [open, setOpen] = useState(false)
-
    return (
       <section>
          <div className='w-full lg:mx-auto'>
@@ -68,15 +65,7 @@ export function Introduction() {
             })}
 
             <li>
-               <button
-                  className={cn(
-                     'transition-colors font-medium flex items-center gap-2 hover:text-green-600 dark:hover:text-green-400'
-                  )}
-                  onClick={() => setOpen(true)}
-               >
-                  Chat
-               </button>
-               <Chat open={open} setOpen={setOpen} />
+               <ChatButton />
             </li>
          </ul>
       </section>

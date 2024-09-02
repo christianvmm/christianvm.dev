@@ -1,6 +1,7 @@
-import { Typography } from '@/components/Typography'
-import { cn } from '@/utils/cn'
+'use client'
 import Image from 'next/image'
+import { Typography } from '@/components/typography'
+import { cn } from '@/utils/cn'
 import { useState } from 'react'
 
 const stack = [
