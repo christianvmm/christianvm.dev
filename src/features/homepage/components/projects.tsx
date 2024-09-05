@@ -2,8 +2,16 @@ import Image from 'next/image'
 import { Typography } from '@/components/ui/typography'
 import FolderArt from '../../../../public/assets/home/folderart.png'
 import Finance from '../../../../public/assets/home/finance.png'
+import ChatUI from '../../../../public/assets/home/chat-ui.png'
 
 const projects = [
+   {
+      name: 'Chat UI',
+      href: 'https://chat.christianvm.dev',
+      description:
+         'A modern chat application interface. Share images, videos, documents, and more.',
+      src: ChatUI,
+   },
    {
       name: 'FolderArt',
       href: 'https://folderart.christianvm.dev',
