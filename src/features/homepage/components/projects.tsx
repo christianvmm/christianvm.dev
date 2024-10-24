@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import { Typography } from '@/components/ui/typography'
 import FolderArt from '../../../../public/assets/home/folderart.png'
-import Finance from '../../../../public/assets/home/finance.png'
 import ChatUI from '../../../../public/assets/home/chat-ui.png'
+import Wallet from '../../../../public/assets/home/wallet.png'
+import { Typography } from '@/components/ui/typography'
 
 const projects = [
    {
@@ -19,10 +19,10 @@ const projects = [
       src: FolderArt,
    },
    {
-      name: 'Finance',
-      href: 'https://finance-xi.vercel.app?email=johndoe@gmail.com&password=123456',
+      name: 'Wallet',
+      href: 'https://wallet.christianvm.dev',
       description: 'Monitor finances with ease.',
-      src: Finance,
+      src: Wallet,
    },
 ]
 
