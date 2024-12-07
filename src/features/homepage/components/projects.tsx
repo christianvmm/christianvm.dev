@@ -2,27 +2,33 @@ import Image from 'next/image'
 import FolderArt from '../../../../public/assets/home/folderart.png'
 import ChatUI from '../../../../public/assets/home/chat-ui.png'
 import Wallet from '../../../../public/assets/home/wallet.png'
+import Gym from '../../../../public/assets/home/gym.png'
 import { Typography } from '@/components/ui/typography'
 
 const projects = [
    {
-      name: 'Chat UI',
-      href: 'https://chat.christianvm.dev',
-      description:
-         'A modern chat application interface. Share images, videos, documents, and more.',
-      src: ChatUI,
-   },
-   {
       name: 'FolderArt',
       href: 'https://folderart.christianvm.dev',
-      description: 'Create custom folder icons for macOS.',
+      description: 'Custom folder icons for macOS.',
       src: FolderArt,
+   },
+   {
+      name: 'Chat UI',
+      href: 'https://chat.christianvm.dev',
+      description: 'Share images, videos, documents, and more.',
+      src: ChatUI,
    },
    {
       name: 'Wallet',
       href: 'https://wallet.christianvm.dev',
       description: 'Monitor finances with ease.',
       src: Wallet,
+   },
+   {
+      name: 'Musclen',
+      href: 'https://musclen.christianvm.dev',
+      description: 'Gym Center Landing Page.',
+      src: Gym,
    },
 ]
 
@@ -38,7 +44,7 @@ export function Projects() {
                return (
                   <li key={i}>
                      <a
-                        aria-label={`Link to ${project.name} ap`}
+                        aria-label={`Link to ${project.name} app`}
                         href={project.href}
                         target='_blank'
                      >
