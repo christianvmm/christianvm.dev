@@ -27,7 +27,7 @@ const projects = [
    {
       name: 'Musclen',
       href: 'https://musclen.christianvm.dev',
-      description: 'Gym Center Landing Page.',
+      description: 'Modern landing page for a workout center.',
       src: Gym,
    },
 ]
