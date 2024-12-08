@@ -1,12 +1,12 @@
-import { CheckCircledIcon, PaperPlaneIcon } from '@/icons'
-import { cn } from '@/utils/cn'
-import { supabase } from '@/utils/supabase'
-import { Tables } from '@/utils/supabase/types'
-import { FormEvent, useEffect, useRef, useState } from 'react'
-import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
-import { flushSync } from 'react-dom'
 import Image from 'next/image'
+import { Tables } from '@/utils/supabase/types'
+import { supabase } from '@/utils/supabase'
 import { Portal } from '@/components/dom-portal'
+import { FormEvent, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
+import { FINAL_MESSAGE_ID, INITIAL_MESSAGE, REPLY } from './consts'
+import { cn } from '@/utils/cn'
+import { CheckCircleIcon, SendHorizonalIcon } from 'lucide-react'
 
 export type Message = {
    id: number
@@ -235,7 +235,7 @@ export function Chat({
                            final && 'text-green-500'
                         )}
                      >
-                        {final ? <CheckCircledIcon /> : <PaperPlaneIcon />}
+                        {final ? <CheckCircleIcon className='h-4 w-4'/> : <SendHorizonalIcon className='h-4 w-4'/>}
                      </button>
                   </div>
                </form>

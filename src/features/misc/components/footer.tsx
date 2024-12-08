@@ -3,21 +3,7 @@ import Link from 'next/link'
 import { socialMediaLinks } from '@/consts'
 import { cn } from '@/utils/cn'
 import { usePathname } from 'next/navigation'
-
-const pages = [
-   {
-      title: 'Home',
-      href: '/',
-   },
-   {
-      title: 'Music',
-      href: '/music',
-   },
-   {
-      title: 'Blog',
-      href: '/blog',
-   },
-]
+import { appLinks } from '@/features/misc/components/navbar'
 
 export default function Footer() {
    const pathname = usePathname()
@@ -33,20 +19,20 @@ export default function Footer() {
                <h1 className='font-medium'>Explore</h1>
 
                <ul className='mt-4 space-y-2'>
-                  {pages.map((page) => {
-                     const current = pathname === page.href
-                     const title = page.title
+                  {appLinks.map((link) => {
+                     const current = pathname === link.href
+                     const label = link.label
 
                      return (
-                        <li key={page.href}>
+                        <li key={link.href}>
                            <Link
                               className={cn(
                                  current && 'text-black dark:text-white',
                                  'text-zinc-400 dark:text-zinc-600 transition-colors hover:text-black dark:hover:text-white'
                               )}
-                              href={page.href}
+                              href={link.href}
                            >
-                              {title}
+                              {label}
                            </Link>
                         </li>
                      )

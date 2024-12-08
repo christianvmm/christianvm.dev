@@ -27,8 +27,8 @@ export default async function MusicPage() {
                'w-full max-w-lg mx-auto order-2 lg:order-1 animate-fadeSm pb-24'
             )}
          >
-            <Typography as='h1' variant='pageTitle' className='mb-8'>
-               top tracks
+            <Typography as='h1' variant='pageTitle' className='mb-8 lowercase'>
+               Top Tracks
             </Typography>
 
             <ul className='flex flex-col gap-y-4'>
@@ -63,8 +63,8 @@ export default async function MusicPage() {
                ))}
             </ul>
 
-            <Typography as='h1' variant='pageTitle' className='my-8'>
-               top artists
+            <Typography as='h1' variant='pageTitle' className='my-8 lowercase'>
+               Top Artists
             </Typography>
 
             <ul className='flex flex-col gap-y-4'>
@@ -83,6 +83,7 @@ export default async function MusicPage() {
                            href={url}
                            className={cn(link, ' font-semibold')}
                            target='_blank'
+                           rel='noopener noreferrer'
                         >
                            {name}
                         </a>

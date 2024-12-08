@@ -14,8 +14,8 @@ export default function Blog() {
 
    return (
       <div className='flex-1 max-w-lg mx-auto animate-fadeSm pb-24'>
-         <Typography as='h1' variant='pageTitle' className='mb-8'>
-            blog
+         <Typography as='h1' variant='pageTitle' className='mb-8 lowercase'>
+            Blog
          </Typography>
 
          <ul>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const appLinks = [
+export const appLinks = [
    {
       href: '/',
       label: 'Home',
@@ -15,6 +15,10 @@ const appLinks = [
    {
       href: '/blog',
       label: 'Blog',
+   },
+   {
+      href: '/ui',
+      label: 'UI',
    },
 ]
 

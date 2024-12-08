@@ -39,10 +39,11 @@ export function Introduction() {
          </Typography>
 
          <Typography className='mb-4'>
-            I&apos;m a 21 y/o Software Developer with 2 years of experience.
-            Currently studying CS at Universidad de Guadalajara. I started
-            learning React back in August 2021 and landed my first job 6 months
-            later. I enjoy automating things, web development and TypeScript.
+            I&apos;m a {calculateAge()} y/o Software Developer with{' '}
+            {calculateExperience()} years of experience. Currently studying CS
+            at Universidad de Guadalajara. I started learning React back in
+            August 2021 and landed my first job 6 months later. I enjoy
+            automating things, web development and TypeScript.
          </Typography>
 
          <ul className='flex gap-6 w-full'>
@@ -70,4 +71,16 @@ export function Introduction() {
          </ul>
       </section>
    )
+}
+
+const millisecondsInAYear = 1000 * 60 * 60 * 24 * 365.25 // Including leap year adjustment
+
+function calculateExperience() {
+   const ms = new Date().getTime() - new Date(2022, 0, 15).getTime()
+   return Math.floor(ms / millisecondsInAYear)
+}
+
+function calculateAge() {
+   const ms = new Date().getTime() - new Date(2002, 8, 26).getTime()
+   return Math.floor(ms / millisecondsInAYear)
 }

@@ -1,6 +1,6 @@
 'use client'
 import { useIsMounted } from '@/hooks'
-import { CheckIcon, CopyIcon } from '@/icons'
+import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useState } from 'react'
 
 export function CodeBlock({
@@ -47,7 +47,7 @@ export function CodeBlock({
                onClick={() => copyCode()}
                className='text-white  p-2 rounded-md hover:bg-zinc-700 transition-colors'
             >
-               {copied ? <CheckIcon /> : <CopyIcon />}
+               {copied ? <CheckIcon  className='w-4 h-4'/> : <CopyIcon className='w-4 h-4' />}
             </button>
          </div>
 
