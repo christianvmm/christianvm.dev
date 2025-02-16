@@ -1,6 +1,5 @@
 import { Typography } from '@/components/ui/typography'
 import { socialMediaLinks } from '@/consts'
-import { ChatButton } from '@/features/homepage/components/chat/button'
 import { cn } from '@/utils/cn'
 
 export function Introduction() {
@@ -64,10 +63,6 @@ export function Introduction() {
                   </li>
                )
             })}
-
-            <li>
-               <ChatButton />
-            </li>
          </ul>
       </section>
    )
