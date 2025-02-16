@@ -11,11 +11,13 @@ export function Experience() {
          </Typography>
 
          <div>
-            <Typography as='h2' variant='subtitle'>
-               Frontend Developer at Estradata
-            </Typography>
+            <div className='flex items-center justify-between h-10'>
+               <Typography as='h2' variant='subtitle'>
+                  Full Stack Developer, Estradata
+               </Typography>
 
-            <Typography variant='small'>2022 - now</Typography>
+               <Typography variant='small'>2022 - now</Typography>
+            </div>
 
             <div className='mt-3'>
                <Typography className='mb-8'>
@@ -32,7 +34,7 @@ export function Experience() {
                   <a
                      href='https://github.com/pedroslopez/whatsapp-web.js'
                      target='_blank'
-                     className={cn(link, 'font-medium')}
+                     className={cn(link)}
                   >
                      pedro&apos;s lopez whatsapp-web.js library
                   </a>

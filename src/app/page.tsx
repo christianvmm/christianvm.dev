@@ -1,4 +1,5 @@
 import {
+   Education,
    Experience,
    Introduction,
    Projects,
@@ -10,6 +11,7 @@ export default function HomePage() {
       <div className='max-w-lg mx-auto flex flex-col gap-20 pb-24 animate-fadeSm'>
          <Introduction />
          <Experience />
+         <Education />
          <Projects />
          <Stack />
       </div>
