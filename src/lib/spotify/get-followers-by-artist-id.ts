@@ -7,13 +7,17 @@ export async function getFollowersByArtistId(id: string, accessToken: string) {
       },
    }).then((res) => res.json())
 
-   const { followers } = z
-      .object({
-         followers: z.object({
-            total: z.number(),
-         }),
-      })
-      .parse(response)
+   try {
+      const { followers } = z
+         .object({
+            followers: z.object({
+               total: z.number(),
+            }),
+         })
+         .parse(response)
 
-   return followers.total
+      return followers.total
+   } catch {
+      return 0
+   }
 }
