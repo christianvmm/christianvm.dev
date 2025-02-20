@@ -42,13 +42,19 @@ export async function getTopTracks(accessToken: string): Promise<Track[]> {
       }
    ).then((res) => res.json())
 
-   const { items } = z
-      .object({
-         items: z.array(trackModel),
-      })
-      .parse(response)
+   try {
+      const { items } = z
+         .object({
+            items: z.array(trackModel),
+         })
+         .parse(response)
 
-   return items.slice(0, 10).map(formatTrack)
+      return items.slice(0, 10).map(formatTrack)
+   } catch (e) {
+      console.log(e)
+
+      return []
+   }
 }
 
 export function formatTrack(item: z.infer<typeof trackModel>) {
