@@ -33,7 +33,7 @@ export const trackModel = z.object({
 })
 
 export async function getTopTracks(accessToken: string): Promise<Track[]> {
-   const response = await fetch(
+   const data = await fetch(
       'https://api.spotify.com/v1/me/top/tracks?time_range=short_term',
       {
          headers: {
@@ -42,19 +42,19 @@ export async function getTopTracks(accessToken: string): Promise<Track[]> {
       }
    ).then((res) => res.json())
 
-   try {
-      const { items } = z
-         .object({
-            items: z.array(trackModel),
-         })
-         .parse(response)
+   const validationResult = z
+      .object({
+         items: z.array(trackModel),
+      })
+      .safeParse(data)
 
-      return items.slice(0, 10).map(formatTrack)
-   } catch (e) {
-      console.log(e)
-
+   if (!validationResult.success) {
+		console.log(data)
+      console.log(validationResult.error.errors)
       return []
    }
+
+   return validationResult.data.items.slice(0, 10).map(formatTrack)
 }
 
 export function formatTrack(item: z.infer<typeof trackModel>) {
