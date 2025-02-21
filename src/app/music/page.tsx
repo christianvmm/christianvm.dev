@@ -11,8 +11,6 @@ export const metadata: Metadata = {
    description: 'My top tracks and artists.',
 }
 
-export const revalidate = 60 * 60 * 24
-
 export default async function MusicPage() {
    const accessToken = await getAccessToken()
    const artists = await getTopArtists(accessToken)

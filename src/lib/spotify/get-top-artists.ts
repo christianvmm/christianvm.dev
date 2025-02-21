@@ -16,6 +16,9 @@ export async function getTopArtists(accessToken: string): Promise<Artist[]> {
          headers: {
             Authorization: `Bearer ${accessToken}`,
          },
+         next: {
+            revalidate: 3600,
+         },
       }
    ).then((res) => res.json())
 

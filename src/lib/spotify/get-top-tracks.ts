@@ -39,6 +39,9 @@ export async function getTopTracks(accessToken: string): Promise<Track[]> {
          headers: {
             Authorization: `Bearer ${accessToken}`,
          },
+         next: {
+            revalidate: 3600,
+         },
       }
    ).then((res) => res.json())
 
@@ -49,7 +52,7 @@ export async function getTopTracks(accessToken: string): Promise<Track[]> {
       .safeParse(data)
 
    if (!validationResult.success) {
-		console.log(data)
+      console.log(data)
       console.log(validationResult.error.errors)
       return []
    }
