@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function MusicPage() {
-   const accessToken = await getAccessToken()
+   const accessToken = await getAccessToken({ cache: 'no-cache' })
    const artists = await getTopArtists(accessToken)
    const tracks = await getTopTracks(accessToken)
 
