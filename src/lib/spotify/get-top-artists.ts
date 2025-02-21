@@ -22,51 +22,51 @@ export async function getTopArtists(accessToken: string): Promise<Artist[]> {
       }
    ).then((res) => res.json())
 
-   try {
-      const { items } = z
-         .object({
-            items: z.array(
-               z.object({
-                  id: z.string(),
-                  name: z.string(),
-                  images: z.array(
-                     z.object({
-                        url: z.string(),
-                     })
-                  ),
-                  external_urls: z.object({
-                     spotify: z.string(),
-                  }),
-                  followers: z.object({
-                     total: z.number(),
-                  }),
-               })
-            ),
-         })
-         .parse(response)
+   const validationResult = z
+      .object({
+         items: z.array(
+            z.object({
+               id: z.string(),
+               name: z.string(),
+               images: z.array(
+                  z.object({
+                     url: z.string(),
+                  })
+               ),
+               external_urls: z.object({
+                  spotify: z.string(),
+               }),
+               followers: z.object({
+                  total: z.number(),
+               }),
+            })
+         ),
+      })
+      .safeParse(response)
 
-      const result = []
-
-      for (let i = 0; i < 10; i++) {
-         const item = items[i]
-         const followers = await getFollowersByArtistId(
-            item.external_urls.spotify.split('/')[
-               item.external_urls.spotify.split('/').length - 1
-            ],
-            accessToken
-         )
-
-         result.push({
-            id: item.id,
-            name: item.name,
-            url: item.external_urls.spotify,
-            image: item.images[0].url,
-            followers: followers.toLocaleString(),
-         })
-      }
-      return result
-   } catch (e) {
-      console.log(e)
+   if (!validationResult.success) {
       return []
    }
+
+   const result = []
+
+   for (let i = 0; i < 10; i++) {
+      const item = validationResult.data.items[i]
+      const followers = await getFollowersByArtistId(
+         item.external_urls.spotify.split('/')[
+            item.external_urls.spotify.split('/').length - 1
+         ],
+         accessToken
+      )
+
+      result.push({
+         id: item.id,
+         name: item.name,
+         url: item.external_urls.spotify,
+         image: item.images[0].url,
+         followers: followers.toLocaleString(),
+      })
+   }
+
+   return result
 }

@@ -5,16 +5,31 @@ import { Typography } from '@/components/ui/typography'
 import cn from 'classnames'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import { unstable_cache } from 'next/cache'
 
 export const metadata: Metadata = {
    title: 'Music',
    description: 'My top tracks and artists.',
 }
 
+async function getCachedMusicPageData() {
+   const ONE_HOUR = 1000 * 60 * 60
+   const key = Math.floor(new Date().valueOf() / ONE_HOUR).toString()
+
+   return unstable_cache(async () => {
+      const accessToken = await getAccessToken({ cache: 'no-cache' })
+
+      const [artists, tracks] = await Promise.all([
+         getTopArtists(accessToken),
+         getTopTracks(accessToken),
+      ])
+
+      return { artists, tracks }
+   }, [key])()
+}
+
 export default async function MusicPage() {
-   const accessToken = await getAccessToken({ cache: 'no-cache' })
-   const artists = await getTopArtists(accessToken)
-   const tracks = await getTopTracks(accessToken)
+   const { artists, tracks } = await getCachedMusicPageData()
 
    return (
       <div className={cn('flex flex-col flex-1')}>
