@@ -1,7 +1,7 @@
 import { Typography } from '@/components/ui/typography'
+import { SystemDiagramImage } from '@/features/homepage/components/system-diagram-image'
 import { link } from '@/styles'
 import { cn } from '@/utils/cn'
-import Image from 'next/image'
 
 export function Experience() {
    return (
@@ -41,21 +41,7 @@ export function Experience() {
                   .
                </Typography>
 
-               <Image
-                  className='mb-8 hidden dark:block bg-zinc-900/70'
-                  src={'/assets/home/system-diagram-dark.png'}
-                  alt='System Diagram'
-                  width={512}
-                  height={308}
-               />
-
-               <Image
-                  className='mb-8 block dark:hidden bg-zinc-100'
-                  src={'/assets/home/system-diagram.png'}
-                  alt='System Diagram'
-                  width={512}
-                  height={308}
-               />
+               <SystemDiagramImage />
 
                <Typography className='mb-8'>
                   This system, used by over a thousand users, provided an
