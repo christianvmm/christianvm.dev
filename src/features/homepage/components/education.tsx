@@ -7,23 +7,23 @@ export function Education() {
             Education
          </Typography>
 
-         <div>
-            <div className='flex items-center justify-between h-10'>
+         <ul>
+            <li className='flex  items-start sm:items-center justify-between py-3 gap-3'>
                <Typography as='h2' variant='subtitle'>
                   Bachelor&apos;s Degree in Computer Science, UdeG
                </Typography>
 
                <Typography variant='small'>2026</Typography>
-            </div>
+            </li>
 
-            <div className='flex items-center justify-between h-10'>
+            <li className='flex items-start sm:items-center justify-between py-3 gap-3'>
                <Typography as='h2' variant='subtitle'>
                   Software Development Technologist, CETI Colomos
                </Typography>
 
                <Typography variant='small'>2022</Typography>
-            </div>
-         </div>
+            </li>
+         </ul>
       </section>
    )
 }
