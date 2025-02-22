@@ -50,13 +50,13 @@ async function TrackPlaying() {
 
    try {
       track = await getCurrentlyListening(accessToken)
-      title = `I'm currently listening to`
+      title = 'Currently playing'
    } catch (err) {
       try {
          const [result] = await getRecentlyPlayedTracks(accessToken, 1)
 
          track = result.track
-         title = `I was listening to this ${getTimeAgo(result.playedAt, true)}`
+			title = `Last played ${getTimeAgo(result.playedAt, true)}`
       } catch (err) {}
    }
 
