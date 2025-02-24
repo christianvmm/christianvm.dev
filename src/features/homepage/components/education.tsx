@@ -10,7 +10,7 @@ export function Education() {
          <ul>
             <li className='flex  items-start sm:items-center justify-between py-3 gap-3'>
                <Typography as='h2' variant='subtitle'>
-                  Bachelor&apos;s Degree in Computer Science, UdeG
+                  Bachelor&apos;s Degree in Computer Science, UDG
                </Typography>
 
                <Typography variant='small'>2026</Typography>
