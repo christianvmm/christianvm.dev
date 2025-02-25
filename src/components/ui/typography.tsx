@@ -8,11 +8,13 @@ type Variants = {
    subtitle: string
    body: string
    small: string
+	accent: string
 }
 const variants: Variants = {
    pageTitle: 'text-2xl font-semibold text-black dark:text-white',
    title: 'text-lg font-semibold text-black dark:text-white',
    subtitle: 'font-semibold text-black dark:text-white',
+	accent: 'text-black dark:text-white font-medium',
    body: 'text-zinc-600 dark:text-zinc-400 leading-7',
    small: 'text-sm ',
 }
