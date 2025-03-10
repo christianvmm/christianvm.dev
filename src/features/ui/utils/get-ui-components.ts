@@ -1,7 +1,14 @@
 import { promises as fs } from 'fs'
 import { MenuBar } from '@/features/ui/components/menu-bar'
+import { Globe } from '@/features/ui/components/globe'
 
 const components = [
+   {
+      title: 'Globe',
+      code: '',
+      filename: 'globe.tsx',
+      Component: Globe,
+   },
    {
       title: 'Menu Bar',
       src: 'https://x.com/WHOISHOSSEINAM/status/1865042861772648855',

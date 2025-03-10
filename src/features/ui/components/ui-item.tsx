@@ -11,9 +11,9 @@ export function UIItem({
    title,
 }: {
    children: React.ReactNode
-   src: string
    code: string
    title: string
+   src?: string
 }) {
    const [copied, setCopied] = useState(false)
    const mounted = useIsMounted()
@@ -32,7 +32,7 @@ export function UIItem({
    }
 
    return (
-      <div>
+      <li>
          <div className='flex justify-between flex-wrap items-center gap-10 mb-2'>
             <Typography variant='subtitle' as='h1' className='mb-2'>
                {title}
@@ -51,21 +51,23 @@ export function UIItem({
                   )}
                </button>
 
-               <a
-                  className='p-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors'
-                  title='Open in External Tab'
-                  href={src}
-                  target='_blank'
-                  rel='noopener noreferrer'
-               >
-                  <ExternalLinkIcon className='h-4 w-4' />
-               </a>
+               {Boolean(src) && (
+                  <a
+                     className='p-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors'
+                     title='Open in External Tab'
+                     href={src}
+                     target='_blank'
+                     rel='noopener noreferrer'
+                  >
+                     <ExternalLinkIcon className='h-4 w-4' />
+                  </a>
+               )}
             </div>
          </div>
 
-         <div className='w-full h-80 rounded-md border border-zinc-200 dark:border-zinc-900 flex items-center justify-center'>
+         <div className='w-full min-h-[20rem] rounded-md border border-zinc-200 dark:border-zinc-900 flex items-center justify-center'>
             {children}
          </div>
-      </div>
+      </li>
    )
 }

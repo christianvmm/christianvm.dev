@@ -1,8 +1,6 @@
 import { Typography } from '@/components/ui/typography'
 import { UIItem } from '@/features/ui/components/ui-item'
 import { getUIComponents } from '@/features/ui/utils/get-ui-components'
-import { link } from '@/styles'
-import { cn } from '@/utils/cn'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -21,28 +19,21 @@ export default async function UI() {
          </Typography>
 
          <Typography className='mb-20'>
-            A curated list of UI components I&apos;ve come across on Twitter.
-            I&apos;ve recreated them using React and TailwindCSS, keeping the
-            design as close as possible to the original. I&apos;ve also included
-            links to the sources to give credit where it&apos;s due. Feel free
-            to copy the code—just make sure you&apos;ve got Tailwind set up and{' '}
-            <a
-               href='https://lucide.dev/guide/packages/lucide-react'
-               className={cn(link)}
-               target='_blank'
-            >
-               lucide-react
-            </a>{' '}
-            installed first!
+            A collection of UI components that I find interesting or inspiring.
+            Whenever possible, I include source code and links to the original
+            sources for reference. Feel free to explore and adapt them to your
+            own projects!
          </Typography>
 
-         {componentsWithCode.map(({ title, code, src, Component }, i) => {
-            return (
-               <UIItem key={i} title={title} code={code} src={src}>
-                  <Component />
-               </UIItem>
-            )
-         })}
+         <ul className='flex flex-col w-full gap-24'>
+            {componentsWithCode.map(({ title, code, src, Component }, i) => {
+               return (
+                  <UIItem key={i} title={title} code={code} src={src}>
+                     <Component />
+                  </UIItem>
+               )
+            })}
+         </ul>
       </div>
    )
 }
