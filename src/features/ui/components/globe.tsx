@@ -71,7 +71,7 @@ export function Globe() {
    }, [r, resolvedTheme])
 
    return (
-      <div className='w-full aspect-square p-10'>
+      <div className='w-full aspect-square p-2'>
          <div className='w-full  h-full flex justify-center items-center'>
             <div className='w-full aspect-square'>
                <canvas
@@ -123,5 +123,3 @@ export function Globe() {
       </div>
    )
 }
-
-export default Globe

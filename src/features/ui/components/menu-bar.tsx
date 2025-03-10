@@ -28,7 +28,7 @@ export function MenuBar() {
 
          <div className='w-[1px] mx-3 bg-zinc-200 dark:bg-zinc-900 h-5' />
 
-         <button className='py-3 px-5 text-sm bg-zinc-950 dark:bg-white dark:text-zinc-950 hover:opacity-75 hover:px-[1.35rem] transition-all rounded-xl text-white'>
+         <button className='py-3 px-5 text-xs sm:text-sm bg-zinc-950 dark:bg-white dark:text-zinc-950 hover:opacity-75 hover:px-[1.35rem] transition-all rounded-xl text-white'>
             Book a Call
          </button>
       </div>
