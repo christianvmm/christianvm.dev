@@ -8,10 +8,10 @@ export function TrackItem({ track }: { track: Track }) {
    return (
       <li className='flex flex-row items-center space-x-4 h-[4.5rem]'>
          <Image
-            height='64'
-            width='64'
             className='w-16 h-16'
-            src={track.image}
+            src={track.image.url}
+            width={track.image.width}
+            height={track.image.height}
             alt={track.title}
          />
 

@@ -8,7 +8,11 @@ export type Track = {
    songUrl: string
    title: string
    album: string
-   image: string
+   image: {
+      url: string
+      width: number
+      height: number
+   }
 }
 
 export const trackModel = z.object({
@@ -23,6 +27,8 @@ export const trackModel = z.object({
       images: z.array(
          z.object({
             url: z.string(),
+            width: z.number(),
+            height: z.number(),
          })
       ),
    }),
@@ -67,6 +73,6 @@ export function formatTrack(item: z.infer<typeof trackModel>) {
       songUrl: item.external_urls.spotify,
       title: item.name,
       album: item.album.name,
-      image: item.album.images[0].url,
+      image: item.album.images[0],
    }
 }

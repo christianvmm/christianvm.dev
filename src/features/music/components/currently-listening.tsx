@@ -7,6 +7,7 @@ import { getAccessToken, getCurrentlyListening, Track } from '@/lib/spotify'
 import { getRecentlyPlayedTracks } from '@/lib/spotify/get-recently-played-tracks'
 import { getTimeAgo } from '@/utils/format-date'
 import { Suspense } from 'react'
+import Image from 'next/image'
 
 export async function CurrentlyListening() {
    return (
@@ -56,7 +57,7 @@ async function TrackPlaying() {
          const [result] = await getRecentlyPlayedTracks(accessToken, 1)
 
          track = result.track
-			title = `Last played ${getTimeAgo(result.playedAt, true)}`
+         title = `Last played ${getTimeAgo(result.playedAt, true)}`
       } catch (err) {}
    }
 
@@ -66,7 +67,13 @@ async function TrackPlaying() {
       <>
          <Tooltip title={title} />
 
-         <img height='64' width='64' src={track.image} alt={track.title} />
+         <Image
+            height={track.image.width}
+            width={track.image.height}
+            src={track.image.url}
+            alt={track.title}
+            className='w-16 h-16 object-cover'
+         />
 
          <div className='flex flex-col'>
             <a

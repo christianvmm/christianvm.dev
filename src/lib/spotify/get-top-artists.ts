@@ -5,7 +5,11 @@ export type Artist = {
    id: string
    name: string
    url: string
-   image: string
+   image: {
+      url: string
+      width: number
+      height: number
+   }
    followers: string
 }
 
@@ -22,6 +26,7 @@ export async function getTopArtists(accessToken: string): Promise<Artist[]> {
       }
    ).then((res) => res.json())
 
+   console.log(response.items.at(0).images.at(0))
    const validationResult = z
       .object({
          items: z.array(
@@ -31,6 +36,8 @@ export async function getTopArtists(accessToken: string): Promise<Artist[]> {
                images: z.array(
                   z.object({
                      url: z.string(),
+                     width: z.number(),
+                     height: z.number(),
                   })
                ),
                external_urls: z.object({
@@ -63,7 +70,7 @@ export async function getTopArtists(accessToken: string): Promise<Artist[]> {
          id: item.id,
          name: item.name,
          url: item.external_urls.spotify,
-         image: item.images[0].url,
+         image: item.images[0],
          followers: followers.toLocaleString(),
       })
    }

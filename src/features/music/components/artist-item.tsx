@@ -8,10 +8,10 @@ export function ArtistItem({ artist }: { artist: Artist }) {
    return (
       <li className='flex flex-row items-center space-x-4 h-[4.5rem]'>
          <Image
-            width='64'
-            height='64'
             className='w-16 h-16'
-            src={artist.image}
+            src={artist.image.url}
+            width={artist.image.width}
+            height={artist.image.height}
             alt={artist.name}
          />
 
