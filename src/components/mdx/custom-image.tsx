@@ -6,5 +6,8 @@ type CustomImageProps = ImageProps & {
 }
 
 export function CustomImage({ alt, ...props }: CustomImageProps) {
+  console.log("alt", alt)
+  console.log("props", props)
+  
    return <Image alt={alt} {...props} />
 }
