@@ -1,11 +1,18 @@
 import Image from 'next/image'
 import FolderArt from '../../../../public/assets/home/folderart.png'
 import ChatUI from '../../../../public/assets/home/chat-ui.png'
-import Wallet from '../../../../public/assets/home/wallet.png'
+import Vel from '../../../../public/assets/home/vel.png'
 import Gym from '../../../../public/assets/home/gym.png'
 import { Typography } from '@/components/ui/typography'
 
 const projects = [
+   {
+      name: 'Vel',
+      href: 'https://vel.christianvm.dev',
+      description:
+         'iOS and Web personal finance app powered by a custom text classification model (TF-IDF + Logistic Regression).',
+      src: Vel,
+   },
    {
       name: 'FolderArt',
       href: 'https://folderart.christianvm.dev',
@@ -18,12 +25,7 @@ const projects = [
       description: 'Share images, videos, documents, and more.',
       src: ChatUI,
    },
-   {
-      name: 'Wallet',
-      href: 'https://wallet.christianvm.dev',
-      description: 'Monitor finances with ease.',
-      src: Wallet,
-   },
+
    {
       name: 'Musclen',
       href: 'https://musclen.christianvm.dev',
